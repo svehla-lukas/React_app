@@ -1,4 +1,5 @@
 {
+  "homepage": "https://rucnajs.github.io/React_app",
   "name": "new-react-app",
   "version": "0.1.0",
   "private": true,
@@ -32,6 +33,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -63,6 +66,7 @@
     "@types/cors": "^2.8.17",
     "@types/leaflet": "^1.9.13",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
+    "gh-pages": "^6.2.0",
     "pretier": "^0.0.1"
   }
 }
