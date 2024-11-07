@@ -29,14 +29,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": [
-    "bautifulled",
-    "Bazoš",
-    "Cena",
-    "inzerátu",
-    "název",
-    "pořadí",
-    "Vytvořit",
-    "změň"
-  ]
+  "cSpell.words": [],
+  "files.eol": "\r\n",
+  "editor.formatOnSave": true
 }
