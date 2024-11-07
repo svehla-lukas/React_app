@@ -1,15 +1,7 @@
-import {
-  BoldText,
-  Button,
-  Container,
-  Description,
-  Heading2,
-  Icon,
-  OrangeText,
-  Text,
-  WeatherContainer,
-} from './Styles'
+import { BoldText, Button, Container, Heading2, Icon, Text, Text20 } from './Styles'
 import React, { useEffect, useRef, useState } from 'react'
+
+const apiKeyOpenWeather = process.env.REACT_APP_OPENWEATHER_API_KEY
 
 const useComponentDidMont = (fn: Parameters<typeof useEffect>[0]) => {
   useEffect(fn, [])
@@ -20,19 +12,17 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null)
   const intervalRef = useRef<number | null>(null)
   const [timeToUpdate, setTimeToUpdate] = useState(timeToRender)
-
-  useComponentDidMont(() => {
-    fetchWeatherData()
-  })
+  const [loadState, setLoadState] = useState('Loading...')
 
   useEffect(() => {
+    fetchWeatherData('API')
     const timer = setInterval(() => {
       setTimeToUpdate(prev => (prev > 0 ? prev - 1 : timeToRender))
     }, 1_000)
 
     intervalRef.current = window.setInterval(() => {
       console.log('Fetch new weather data from server')
-      fetchWeatherData()
+      fetchWeatherData('API')
     }, timeToRender * 1000)
 
     // CleanUp intervals on demount component
@@ -46,21 +36,38 @@ const Weather = () => {
     }
   }, [timeToRender])
 
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (source: string) => {
     setTimeToUpdate(timeToRender)
+    console.log(process.env.REACT_APP_OPENWEATHER_API_KEY)
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('Request timed out')), 1_000)
+    )
+
     try {
-      const response = await fetch('http://localhost:1234/openWeatherMap')
+      const response = (await Promise.race([
+        fetch(
+          source === 'API'
+            ? `https://api.openweathermap.org/data/2.5/weather?q=Brno,CZ&appid=${apiKeyOpenWeather}&units=metric`
+            : 'http://localhost:1234/openWeatherMap'
+        ),
+        timeout,
+      ])) as Response
+
+      if (!response.ok) throw new Error('Network response was not ok')
+
       const data = await response.json()
       setWeatherData(data)
-      console.log(weatherData)
+      console.log(data)
     } catch (error) {
       console.error('Error fetching weather data:', error)
+      setLoadState('Error fetching weather data:')
+      setWeatherData(null)
     }
   }
 
   const WeatherDisplay = ({ weatherData }: { weatherData: any }) => {
     if (!weatherData || !weatherData.main) {
-      return <p>Loading...</p>
+      return <p>{loadState}</p>
     }
 
     const {
@@ -73,13 +80,13 @@ const Weather = () => {
     return (
       <Container>
         <Heading2>Weather in {cityName}</Heading2>
-        <WeatherContainer>
+        <Container flexDirection='row'>
           <Icon
             src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
             alt='Weather icon'
           />
-          <OrangeText>{temp}°C</OrangeText>
-        </WeatherContainer>
+          <Text20>{temp}°C</Text20>
+        </Container>
         <BoldText>
           <p>{weather[0].description}</p>
           <p>Feels like: {Math.round(feels_like)}°C</p>
@@ -89,17 +96,22 @@ const Weather = () => {
         <Text>
           Update in: {Math.floor(timeToUpdate / 60)} : {timeToUpdate % 60} s
         </Text>
-        <Button background='lightGray' onClick={() => fetchWeatherData()}>
-          Update Now
-        </Button>
       </Container>
     )
   }
 
   return (
-    <div>
+    <Container>
+      <Container flexDirection='column'>
+        <Button background='lightGray' onClick={() => fetchWeatherData('API')}>
+          Update from API
+        </Button>
+        <Button background='lightGray' onClick={() => fetchWeatherData('backend')}>
+          Update from backend
+        </Button>
+      </Container>
       <WeatherDisplay weatherData={weatherData} />
-    </div>
+    </Container>
   )
 }
 

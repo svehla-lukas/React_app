@@ -26,14 +26,6 @@ export const ButtonContainer = styled.div`
   justify-content: center;
 `
 
-export const WeatherContainer = styled.div`
-  display: flex;
-  align-items: center; /* Center items vertically within the row */
-  justify-content: center;
-  flex-direction: row; /* Align items horizontally */
-  gap: 10px; /* Adjust spacing between elements */
-  margin-top: 10px;
-`
 // --- Headers ---
 
 export const Heading2 = styled.h2`
@@ -68,6 +60,10 @@ export const Text14 = styled.p`
   font-size: 1.4rem;
   color: #555;
 `
+export const Text20 = styled.p`
+  font-size: 2rem;
+  color: #555;
+`
 
 export const BoldText = styled.p`
   font-size: 1rem;
@@ -81,13 +77,6 @@ export const LoadingPlaceholder = styled.div<{ loading: boolean }>`
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-`
-
-export const Description = styled.p`
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #666;
-  text-transform: capitalize;
 `
 
 export const ExtraInfo = styled.p`
