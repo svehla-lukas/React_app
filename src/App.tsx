@@ -1,9 +1,12 @@
 // single - Import single member.
-import Clock from './clock'
-// all - Import all members, where myModule contains all the exported bindings.
+
 import { Link } from 'react-router-dom'
+import Clock from './clock'
 import Weather from './Weather'
 import logo from './logo.png'
+
+// all - Import all members, where myModule contains all the exported bindings.
+
 // multiple - Import multiple members.
 
 const App = () => {
@@ -34,7 +37,7 @@ const App = () => {
               <Link to='/HackerType'>HackerType</Link>
             </li>
             <li>
-              <Link to='/Weather'>Weather - local server</Link>
+              <Link to='/Weather'>Weather</Link>
             </li>
           </ul>
         </nav>
