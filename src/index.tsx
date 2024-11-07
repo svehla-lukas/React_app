@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App'
 import Clock from './clock'
 import HackerType from './HackerType'
+import MapsCZ from './MapsCZ'
 import MemoryGame from './MemoryGame'
 import ReactDOM from 'react-dom/client'
 import TicTacToe from './gameTTT'
@@ -25,6 +26,7 @@ root.render(
       <Route path='/MemoryGame' element={<MemoryGame />} />
       <Route path='/HackerType' element={<HackerType />} />
       <Route path='/Weather' element={<Weather />} />
+      <Route path='/MapsCZ' element={<MapsCZ />} />
     </Routes>
   </BrowserRouter>
 )

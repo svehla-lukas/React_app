@@ -2,7 +2,6 @@
 
 import { Link } from 'react-router-dom'
 import Clock from './clock'
-import Weather from './Weather'
 import logo from './logo.png'
 
 // all - Import all members, where myModule contains all the exported bindings.
@@ -37,7 +36,10 @@ const App = () => {
               <Link to='/HackerType'>HackerType</Link>
             </li>
             <li>
-              <Link to='/Weather'>Weather</Link>
+              <Link to='/MapsCZ'>Maps CZ - API</Link>
+            </li>
+            <li>
+              <Link to='/Weather'>Weather - API</Link>
             </li>
           </ul>
         </nav>
