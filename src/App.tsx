@@ -34,7 +34,7 @@ const App = () => {
               <Link to='/HackerType'>HackerType</Link>
             </li>
             <li>
-              <Link to='/Weather'>Weather</Link>
+              <Link to='/Weather'>Weather - local server</Link>
             </li>
           </ul>
         </nav>

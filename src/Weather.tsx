@@ -3,11 +3,9 @@ import {
   Button,
   Container,
   Description,
-  ExtraInfo,
-  Heading,
+  Heading2,
   Icon,
   OrangeText,
-  SquareButton,
   Text,
   WeatherContainer,
 } from './Styles'
@@ -74,7 +72,7 @@ const Weather = () => {
 
     return (
       <Container>
-        <Heading>Weather in {cityName}</Heading>
+        <Heading2>Weather in {cityName}</Heading2>
         <WeatherContainer>
           <Icon
             src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}

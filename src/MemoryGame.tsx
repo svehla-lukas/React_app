@@ -1,103 +1,16 @@
+import {
+  BoldText,
+  Button,
+  Container,
+  GridContainer,
+  Heading2,
+  Heading3,
+  Input,
+  LoadingPlaceholder,
+  SquareButtonCard,
+  Text12,
+} from './Styles'
 import React, { useEffect, useState } from 'react'
-
-import { createPublicKey } from 'crypto'
-import { css } from '@emotion/css'
-
-const formStyles = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-`
-
-const labelStyles = css`
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0.5rem;
-`
-
-const inputWrapperStyles = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
-
-const inputStyles = css`
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 2px solid #ccc;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  max-width: 300px;
-
-  &:focus {
-    border-color: #00bfa5;
-    box-shadow: 0 0 8px rgba(0, 191, 165, 0.5);
-  }
-`
-
-const buttonStyles = css`
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  background-color: #00bfa5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: #009688;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-`
-
-const getButtonStyles = () => `
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  background: yellow;
-  color: black;
-  width: 4rem;
-  height: 4rem;
-  box-sizing: border-box;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
-const containerStyles = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 10vh;
-  padding: 2rem;
-  background-color: #f5f5f5;
-`
-
-const boardStyles = css`
-  display: grid;
-  grid-gap: 10px;
-  margin-top: 2rem;
-`
 
 type Cards = {
   id: number
@@ -106,76 +19,77 @@ type Cards = {
   solved: boolean
 }
 
-// Tento kód zajistí, že kdykoliv se cells změní
-// (což znamená, že komponenta dostane nové cells jako props),
-// stav cards bude aktualizován tak, aby odrážel tyto nové hodnoty.
-// zakaze programatorovi pouzivat useEffect bez druheho argumentu
-const useComponentDidMont = (fn: Parameters<typeof useEffect>[0]) => {
+const useComponentDidMount = (fn: Parameters<typeof useEffect>[0]) => {
   useEffect(fn, [])
 }
 
-const BoardPlate = ({ cells }: { cells: Cards[] }) => {
-  useComponentDidMont(() => {
+const BoardPlate = ({ cells, playersNames }: { cells: Cards[]; playersNames: string[] }) => {
+  useComponentDidMount(() => {
     setCards(p => cells)
-    console.log('useComp')
   })
   const [cards, setCards] = useState<Cards[]>(cells)
-  const [counterCard, setCounterCard] = useState(0)
+  const [turnCounter, setTurnCounter] = useState(0)
   const [lastCardId, setLastCardId] = useState(999)
-  const [disableFlip, setDisableFlip] = useState(false)
-  const [debug, setDebug] = useState(true)
+  const [isFlippingDisabled, setIsFlippingDisabled] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [player, setPlayer] = useState(true)
+  const [scorePlayerOne, setScorePlayerOne] = useState(0)
+  const [scorePlayerTwo, setScorePlayerTwo] = useState(0)
 
   const ButtonCard = ({ myId, ...props }: { myId: number } & React.ComponentProps<'button'>) => {
-    return (
-      <button {...props} className={css(getButtonStyles())}>
-        {props.children} {/* Display the value of the card */}
-      </button>
-    )
+    return <SquareButtonCard {...props}>{props.children}</SquareButtonCard>
+  }
+
+  const resetScore = (cards: Cards[]) => {
+    if (cards.every(card => card.faceUp === false)) {
+      setTurnCounter(0)
+      setScorePlayerOne(0)
+      setScorePlayerTwo(0)
+    }
   }
 
   const handleButtonClick = (clickedCard: Cards) => {
     // if time test not pass return
-    if (disableFlip || clickedCard.faceUp) return
-
-    cards.every(card => card.faceUp === false) ? setCounterCard(1) : setCounterCard(counterCard + 1)
+    if (isFlippingDisabled || clickedCard.faceUp) return
+    resetScore(cards)
+    setTurnCounter(turnCounter + 1)
 
     // Find for matches of two cards that are flipped up
     const pairCard =
-      cards.find(
-        card =>
-          card.faceUp &&
-          !card.solved &&
-          card.value === clickedCard.value &&
-          card.id !== clickedCard.id
-      )?.value ?? 'notFound'
+      turnCounter % 2
+        ? // find pair
+          cards.find(
+            card =>
+              card.faceUp &&
+              !card.solved &&
+              card.value === clickedCard.value &&
+              card.id !== clickedCard.id
+          )?.value ?? 'notFound'
+        : 'notFound'
 
     if (pairCard === 'notFound') {
-      // Swap up card, not found twin
-      // setCards(previousCards => {
-      const newCard = cards.map(card => {
-        if (card.id === clickedCard.id && !clickedCard.faceUp) {
-          // console.log('Card was face down, now flipped up')
-          setLastCardId(card.id)
-          return { ...card, faceUp: true } // Swap up card
-        }
-        return card
-      })
-      // })
+      // Swap up actual card
+      setCards(previousCards =>
+        previousCards.map(card => {
+          if (card.id === clickedCard.id && !clickedCard.faceUp) {
+            setLastCardId(card.id)
+            return { ...card, faceUp: true }
+          }
+          return card
+        })
+      )
 
-      // second turn => start time interval
-      if (counterCard % 2 === 1) {
-        setDisableFlip(true)
+      // if second turn, start time interval
+      if (turnCounter % 2) {
+        setIsFlippingDisabled(true)
         handleCardFlipTimeout(clickedCard.id, lastCardId)
       }
-      setCards(newCard)
     } else {
-      // Found winning turn
-      console.log('Found winner twin')
+      // Found winning twin
       setCards(previousCards => {
         return previousCards.map(cell => {
           if (cell.value === pairCard) {
-            console.log(cell.value)
+            player ? setScorePlayerOne(scorePlayerOne + 1) : setScorePlayerTwo(scorePlayerTwo + 1)
             return { ...cell, faceUp: true, solved: true }
           } else {
             return cell
@@ -188,6 +102,7 @@ const BoardPlate = ({ cells }: { cells: Cards[] }) => {
   // Function to handle flipping cards back after timeout
   const handleCardFlipTimeout = (currentCardId: number, previousCardId: number) => {
     setLoading(true)
+    setPlayer(p => !p)
     const flipPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve('Flip cards back after timeout!')
@@ -201,56 +116,45 @@ const BoardPlate = ({ cells }: { cells: Cards[] }) => {
               : card
           )
         })
-        setDisableFlip(false)
+        setIsFlippingDisabled(false)
         setLoading(false)
       })
       .catch(error => {
-        console.log('Error flipping cards:', error)
-        setDisableFlip(false)
+        setIsFlippingDisabled(false)
         setLoading(false)
       })
-  }
-
-  // DebugPanel component for displaying debug information
-  const DebugPanel = ({ cell, counterCard }: { cell: Cards[]; counterCard: number }) => {
-    return (
-      <div>
-        <h3>Debug values:</h3>
-        <div>- counter: {counterCard}</div>
-        <br />
-        <div>- id: {cards.map(cell => cell.id).join(', ')}</div>
-        <br />
-        <div>- value: {cards.map(cell => cell.value).join(', ')}</div>
-        <br />
-        <div>- faceUp: {cards.map(cell => (cell.faceUp ? 1 : 0)).join(', ')}</div>
-        <br />
-        <div>- solved: {cards.map(cell => (cell.solved ? 1 : 0)).join(', ')}</div>
-      </div>
-    )
   }
 
   return (
     <div>
-      <div>{loading && <div className='loading-indicator'>⏳ Flipping cards...</div>}</div>
-      <div
-        className={boardStyles}
-        style={{
-          gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(cells.length))}, 1fr)`,
-        }}
-      >
-        {cards.map(card => (
-          <ButtonCard key={card.id} onClick={() => handleButtonClick(card)} myId={card.id}>
-            {card.faceUp ? card.value : ''}
-          </ButtonCard>
-        ))}
-      </div>
-      <div>
-        <p></p>
-        <button type='button' className={buttonStyles} onClick={p => setDebug(!debug)}>
-          debug mode
-        </button>
-        {debug && <DebugPanel cell={cards} counterCard={counterCard} />}
-      </div>
+      <Container flexDirection='row'>
+        <Container>
+          <LoadingPlaceholder loading={loading}>⏳ Loading...</LoadingPlaceholder>
+          <Text12>{player ? playersNames[0] : playersNames[1]}</Text12>
+          <GridContainer columns={Math.ceil(Math.sqrt(cells.length))}>
+            {cards.map(card => (
+              <ButtonCard
+                key={card.id}
+                onClick={() => {
+                  handleButtonClick(card)
+                }}
+                myId={card.id}
+              >
+                {card.faceUp ? card.value : ''}
+              </ButtonCard>
+            ))}
+          </GridContainer>
+        </Container>
+        <Container>
+          <Heading3>Score:</Heading3>
+          <text>
+            {playersNames[0]} : {scorePlayerOne}
+          </text>
+          <text>
+            {playersNames[1]} : {scorePlayerTwo}
+          </text>
+        </Container>
+      </Container>
     </div>
   )
 }
@@ -276,6 +180,8 @@ const MemoryGame = () => {
   const [inputCell, setInputCell] = useState(5)
   const [cards, setCards] = useState([] as Cards[])
   const [counter, setCounter] = useState(0)
+  const [namePlayerOne, setNamePlayerOne] = useState('player 1')
+  const [NamePlayerTwo, setNamePlayerTwo] = useState('player 2')
 
   const handleGenerateDataForBoard = () => {
     const gameCards = generatePlayingCards(inputCell)
@@ -290,10 +196,8 @@ const MemoryGame = () => {
   }
 
   return (
-    <div className={containerStyles}>
-      <header>
-        <h1>Memory Game</h1>
-      </header>
+    <Container>
+      <Heading2>Memory Game</Heading2>
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -301,26 +205,56 @@ const MemoryGame = () => {
             handleGenerateDataForBoard()
           }
         }}
-        className={formStyles} // Added form layout styles
       >
-        <div className={inputWrapperStyles}>
-          <label htmlFor='cellInput' className={labelStyles}>
-            Set number of cells:
-          </label>
-          <input
-            id='cellInput'
-            type='number'
-            onChange={e => setInputCell(p => Number(e.target.value))}
-            className={inputStyles}
-          />
-        </div>
-        <button type='submit' className={buttonStyles} onClick={() => setCounter(p => p + 1)}>
-          {cards.length === 0 ? 'Play' : 'Play again'}
-        </button>
-        <BoardPlate key={cards.length + counter} cells={cards} />
+        <GridContainer columns={2}>
+          <Container>
+            <Heading3>Set pairs:</Heading3>
+            <Input
+              id='cellInput'
+              min={2}
+              max={30}
+              value={inputCell}
+              type='number'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputCell(Number(e.target.value))
+              }
+            />
+            <Button
+              type='submit'
+              onClick={() => {
+                setCounter(p => p + 1)
+              }}
+            >
+              {cards.length === 0 ? 'Play' : 'Play again'}
+            </Button>
+          </Container>
+          <Container>
+            <Heading3>Set players names</Heading3>
+            <Input
+              id='cellInput'
+              value={namePlayerOne}
+              type='string'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNamePlayerOne(e.target.value)
+              }
+            ></Input>
+            <Input
+              id='cellInput'
+              value={NamePlayerTwo}
+              type='string'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNamePlayerTwo(e.target.value)
+              }
+            ></Input>
+          </Container>
+        </GridContainer>
+        <BoardPlate
+          key={cards.length + counter}
+          cells={cards}
+          playersNames={[namePlayerOne, NamePlayerTwo]}
+        />
       </form>
-      <p></p>
-    </div>
+    </Container>
   )
 }
 
