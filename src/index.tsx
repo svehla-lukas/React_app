@@ -1,9 +1,9 @@
 // all - Import all members, where myModule contains all the exported bindings.
 
 // multiple - Import multiple members.
-import { BrowserRouter, Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-// single - Import single member.
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import App from './App'
 import Clock from './clock'
 import HackerType from './HackerType'
@@ -12,6 +12,8 @@ import ReactDOM from 'react-dom/client'
 import TicTacToe from './gameTTT'
 import Weather from './Weather'
 import reportWebVitals from './reportWebVitals'
+
+// single - Import single member.
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
