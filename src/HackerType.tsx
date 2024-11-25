@@ -1,5 +1,7 @@
 import { Button, ButtonContainer, Container, Heading1, Pre, Text } from './Styles'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+// import text from './hackerTypeSouce.txt'
 
 const useComponentDidMont = async () => {
   const response = await fetch('http://localhost:1234')
@@ -20,7 +22,6 @@ const HackerType = () => {
       toggleAutomaticWriting()
     } else if (e.key === 'Escape') {
       stopAutomaticWriting()
-      // } else if (e.key === 'F4') {
     }
   }
 
@@ -52,11 +53,9 @@ const HackerType = () => {
       }
     })
   }
-
   const getLocalData = async () => {
     try {
       const response = await fetch('./hackerTypeSource.txt')
-      // const response = await fetch('/hackerTypeSource.txt')
 
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`)
@@ -95,6 +94,12 @@ const HackerType = () => {
     <div tabIndex={0} onKeyDown={handleKeyDown}>
       <Container>
         <Heading1>Hacker Type:</Heading1>
+        <Container>
+          <ul>
+            <li>Pres enter to Write</li>
+            <li>Pres enter/escape to Stop</li>
+          </ul>
+        </Container>
         <form
           onSubmit={e => {
             e.preventDefault()
@@ -104,8 +109,6 @@ const HackerType = () => {
         </form>
       </Container>
       <Container>
-        <Text>Pres enter to Write</Text>
-        <Text>Pres enter/escape to Stop</Text>
         <Text>
           Counter: {counterUserInterrupt} length: {writingText.length}
         </Text>
