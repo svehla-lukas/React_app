@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-
-import { stringify } from 'querystring'
+import { Button, ButtonContainer, Container, Heading1, Pre, Text } from './Styles'
+import { useRef, useState } from 'react'
 
 const useComponentDidMont = async () => {
   const response = await fetch('http://localhost:1234')
@@ -8,37 +7,122 @@ const useComponentDidMont = async () => {
 }
 
 const HackerType = () => {
-  const [pressKey, setPressKey] = useState(false)
-  const [wikiText, setWikiText] = useState('')
+  const [counterUserInterrupt, setCounterUserInterrupt] = useState(0)
+  const [isPreVisible, setIsPreVisible] = useState(false)
+  const [automatOn, setAutomatOn] = useState(false)
+  const [writingText, setWritingText] = useState('Fetch data by Button below')
+  const timeoutId = useRef<NodeJS.Timeout | null>(null)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    e.key.length === 1 && /[a-zA-Z]/.test(e.key)
-      ? (console.log(`You pressed: ${e.key}`), setPressKey(true))
-      : setPressKey(false)
+    if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+      setCounterUserInterrupt(p => p + 1)
+    } else if (e.key === 'Enter') {
+      toggleAutomaticWriting()
+    } else if (e.key === 'Escape') {
+      stopAutomaticWriting()
+      // } else if (e.key === 'F4') {
+    }
   }
 
-  const fetchWikiContent = async () => {
-    const response = await fetch('http://localhost:1234')
-    console.log(response)
-    setWikiText(await response.json())
+  const toggleAutomaticWriting = () => {
+    setAutomatOn(prev => {
+      prev && timeoutId.current
+        ? (clearTimeout(timeoutId.current), (timeoutId.current = null))
+        : handleAutomaticWritingText()
+      return !prev
+    })
+  }
+
+  const stopAutomaticWriting = () => {
+    setAutomatOn(false)
+    timeoutId.current && clearTimeout(timeoutId.current)
+    timeoutId.current = null
+  }
+
+  const handleAutomaticWritingText = () => {
+    if (automatOn) return
+
+    setCounterUserInterrupt(prevCounter => {
+      if (prevCounter < writingText.length) {
+        timeoutId.current = setTimeout(handleAutomaticWritingText, 60)
+        return prevCounter + 1
+      } else {
+        timeoutId.current = setTimeout(handleAutomaticWritingText, 60)
+        return 0
+      }
+    })
+  }
+
+  const getLocalData = async () => {
+    try {
+      const response = await fetch('./hackerTypeSource.txt')
+      // const response = await fetch('/hackerTypeSource.txt')
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch file: ${response.statusText}`)
+      }
+
+      const data = await response.text()
+      console.log('File content:', data)
+
+      setWritingText(data)
+    } catch (error) {
+      console.error('Error reading the file:', error)
+      setWritingText(`Error: Unable to fetch data (${error})`)
+      setCounterUserInterrupt(0)
+    }
+  }
+
+  const fetchBackendData = async (dataType: string) => {
+    try {
+      const response = await fetch(`http://localhost:1234?dataType=${dataType}`)
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const data = await response.json()
+      setWritingText(JSON.stringify(data, null, 2))
+      console.log('Fetched data:', data)
+    } catch (error) {
+      console.error('Error fetching data from backend:', error)
+      setWritingText(`Error: Unable to fetch data (${error})`)
+      setCounterUserInterrupt(0)
+    }
   }
 
   return (
-    <div>
-      <div
-        tabIndex={0}
-        onKeyDown={handleKeyDown}
-        style={{ padding: '20px', border: '1px solid black' }}
-      >
-        <h1>Hacker Type</h1>
-        <h2>{pressKey ? 'ano' : 'ne'}</h2>
-        <p>Last pressed key: {pressKey}</p>
-      </div>
-      <div>
-        <button onClick={fetchWikiContent}>fetch data</button>
-        <h2>Fetched Page Content</h2>
-        <pre>{JSON.stringify(wikiText, null, 2)}</pre>
-      </div>
+    <div tabIndex={0} onKeyDown={handleKeyDown}>
+      <Container>
+        <Heading1>Hacker Type:</Heading1>
+        <form
+          onSubmit={e => {
+            e.preventDefault()
+          }}
+        >
+          <Pre>{writingText.slice(0, counterUserInterrupt)}</Pre>
+        </form>
+      </Container>
+      <Container>
+        <Text>Pres enter to Write</Text>
+        <Text>Pres enter/escape to Stop</Text>
+        <Text>
+          Counter: {counterUserInterrupt} length: {writingText.length}
+        </Text>
+        <ButtonContainer flexDirection='row'>
+          <Button onClick={() => fetchBackendData('typeA')}>fetch data A</Button>
+          <Button onClick={() => fetchBackendData('typeB')}>fetch data B</Button>
+          <Button onClick={() => getLocalData()}>use Local Data</Button>
+          <Button onClick={() => setCounterUserInterrupt(0)}>Reset counter</Button>
+        </ButtonContainer>
+        <h2>Fetched Page Content:</h2>
+        <div>
+          <Button size='small' onClick={() => setIsPreVisible(prevState => !prevState)}>
+            {isPreVisible ? 'Hide' : 'Show'} Data
+          </Button>
+          <div>{isPreVisible && <pre>external_data: {writingText}</pre>}</div>
+        </div>
+      </Container>
     </div>
   )
 }
