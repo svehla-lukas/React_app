@@ -9,10 +9,10 @@ const useComponentDidMont = async () => {
 }
 
 const HackerType = () => {
-  const [counterUserInterrupt, setCounterUserInterrupt] = useState(0)
   const [isPreVisible, setIsPreVisible] = useState(false)
   const [automatOn, setAutomatOn] = useState(false)
   const [writingText, setWritingText] = useState('Fetch data by Button below')
+  const [counterUserInterrupt, setCounterUserInterrupt] = useState(writingText.length)
   const timeoutId = useRef<NodeJS.Timeout | null>(null)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -54,6 +54,7 @@ const HackerType = () => {
     })
   }
   const getLocalData = async () => {
+    setCounterUserInterrupt(0)
     try {
       const response = await fetch('./hackerTypeSource.txt')
 
@@ -73,6 +74,7 @@ const HackerType = () => {
   }
 
   const fetchBackendData = async (dataType: string) => {
+    setCounterUserInterrupt(0)
     try {
       const response = await fetch(`http://localhost:1234?dataType=${dataType}`)
 
