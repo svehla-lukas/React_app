@@ -1,4 +1,4 @@
-import { Button, ButtonContainer, Container, Heading1, Pre, Text } from './Styles'
+import { Button, ButtonContainer, Container, ContainerSmall, Heading1, Pre, Text } from './Styles'
 import { useEffect, useRef, useState } from 'react'
 
 // import text from './hackerTypeSouce.txt'
@@ -94,19 +94,21 @@ const HackerType = () => {
     <div tabIndex={0} onKeyDown={handleKeyDown}>
       <Container>
         <Heading1>Hacker Type:</Heading1>
-        <Container>
+        <ContainerSmall>
           <ul>
-            <li>Pres enter to Write</li>
+            <li>Pres enter to auto Write</li>
             <li>Pres enter/escape to Stop</li>
           </ul>
+        </ContainerSmall>
+        <Container>
+          <form
+            onSubmit={e => {
+              e.preventDefault()
+            }}
+          >
+            <Pre>{writingText.slice(0, counterUserInterrupt)}</Pre>
+          </form>
         </Container>
-        <form
-          onSubmit={e => {
-            e.preventDefault()
-          }}
-        >
-          <Pre>{writingText.slice(0, counterUserInterrupt)}</Pre>
-        </form>
       </Container>
       <Container>
         <Text>

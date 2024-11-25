@@ -14,7 +14,18 @@ export const Container = styled.div<{ flexDirection?: string; alignIems?: string
   display: flex;
   flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
   align-items: ${({ alignIems = 'center' }) => alignIems};
-  text-align: left;
+`
+
+export const ContainerSmall = styled.div<{ flexDirection?: string; alignIems?: string }>`
+  margin: 2px auto;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
+  align-items: ${({ alignIems = 'center' }) => alignIems};
 `
 export const GridContainer = styled.div<{ columns?: number }>`
   display: grid;
