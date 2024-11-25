@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts"
+    "start": "ts-node-dev --respawn src/index.ts",
   },
-  "author": "Jakub Švehla",
+  "author": "Lukas Svehla",
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.12",
