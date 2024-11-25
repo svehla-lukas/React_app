@@ -1,7 +1,5 @@
-import { Button, ButtonContainer, Container, ContainerSmall, Heading1, Pre, Text } from './Styles'
-import { useEffect, useRef, useState } from 'react'
-
-// import text from './hackerTypeSouce.txt'
+import { Button, ButtonContainer, Container, Heading1, Pre, Text } from './Styles'
+import { useRef, useState } from 'react'
 
 const useComponentDidMont = async () => {
   const response = await fetch('http://localhost:1234')
@@ -12,7 +10,7 @@ const HackerType = () => {
   const [counterUserInterrupt, setCounterUserInterrupt] = useState(0)
   const [isPreVisible, setIsPreVisible] = useState(false)
   const [automatOn, setAutomatOn] = useState(false)
-  const [writingText, setWritingText] = useState('Fetch data by Button below')
+  const [writingText, setWritingText] = useState('')
   const timeoutId = useRef<NodeJS.Timeout | null>(null)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -22,6 +20,7 @@ const HackerType = () => {
       toggleAutomaticWriting()
     } else if (e.key === 'Escape') {
       stopAutomaticWriting()
+      // } else if (e.key === 'F4') {
     }
   }
 
@@ -53,9 +52,11 @@ const HackerType = () => {
       }
     })
   }
+
   const getLocalData = async () => {
     try {
       const response = await fetch('./hackerTypeSource.txt')
+      // const response = await fetch('/hackerTypeSource.txt')
 
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`)
@@ -94,21 +95,13 @@ const HackerType = () => {
     <div tabIndex={0} onKeyDown={handleKeyDown}>
       <Container>
         <Heading1>Hacker Type:</Heading1>
-        <ContainerSmall>
-          <ul>
-            <li>Pres enter to auto Write</li>
-            <li>Pres enter/escape to Stop</li>
-          </ul>
-        </ContainerSmall>
-        <Container>
-          <form
-            onSubmit={e => {
-              e.preventDefault()
-            }}
-          >
-            <Pre>{writingText.slice(0, counterUserInterrupt)}</Pre>
-          </form>
-        </Container>
+        <form
+          onSubmit={e => {
+            e.preventDefault()
+          }}
+        >
+          <Pre>{writingText.slice(0, counterUserInterrupt)}</Pre>
+        </form>
       </Container>
       <Container>
         <Text>
