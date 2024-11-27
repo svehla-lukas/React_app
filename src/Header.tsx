@@ -1,15 +1,22 @@
-// single - Import single member.
-
 import { Container } from './Styles'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Clock from './clock'
-import logo from './logo.png'
 
-const App = () => {
+const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <Container flexDirection='row'>
       <div>
-        <img src={logo} width={'100px'}></img>
+        <Link to='/target-page'>
+          <img
+            src={`${process.env.PUBLIC_URL}/logo.png`}
+            alt='Navigate'
+            width='100px'
+            style={{ cursor: 'pointer' }}
+          />
+        </Link>
       </div>
       <Container>
         <nav>
@@ -39,4 +46,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Header

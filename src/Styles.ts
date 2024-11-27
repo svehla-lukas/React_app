@@ -10,7 +10,7 @@ export const Container = styled.div<{
   justifyContent?: string
 }>`
   margin: 5px auto;
-  padding: 20px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #f7f7f7;
