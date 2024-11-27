@@ -82,8 +82,8 @@ export const BoldText = styled.p`
   color: #555;
   font-weight: bold;
 `
-export const LoadingPlaceholder = styled.div<{ loading: boolean }>`
-  visibility: ${({ loading }) => (loading ? 'visible' : 'hidden')};
+export const TextVisibility = styled.div<{ visibility: string }>`
+  visibility: ${({ visibility = 'visible' }) => visibility};
   min-height: 2rem;
   display: flex;
   align-items: center;
