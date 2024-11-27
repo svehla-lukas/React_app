@@ -4,8 +4,12 @@
 import styled from '@emotion/styled'
 
 // --- CONTAINERS ---
-export const Container = styled.div<{ flexDirection?: string; alignIems?: string }>`
-  margin: 20px auto;
+export const Container = styled.div<{
+  flexDirection?: string
+  alignItems?: string
+  justifyContent?: string
+}>`
+  margin: 5px auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -13,19 +17,8 @@ export const Container = styled.div<{ flexDirection?: string; alignIems?: string
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
-  align-items: ${({ alignIems = 'center' }) => alignIems};
-`
-
-export const ContainerSmall = styled.div<{ flexDirection?: string; alignIems?: string }>`
-  margin: 2px auto;
-  padding: 5px;
-  border-radius: 4px;
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: #f7f7f7;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
-  align-items: ${({ alignIems = 'center' }) => alignIems};
+  align-items: ${({ alignItems = 'center' }) => alignItems};
+  justify-content: ${({ justifyContent = 'space-between' }) => justifyContent};
 `
 export const GridContainer = styled.div<{ columns?: number }>`
   display: grid;

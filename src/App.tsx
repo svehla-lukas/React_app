@@ -1,29 +1,17 @@
 // single - Import single member.
 
+import { Container } from './Styles'
 import { Link } from 'react-router-dom'
 import Clock from './clock'
 import logo from './logo.png'
 
-// all - Import all members, where myModule contains all the exported bindings.
-
-// multiple - Import multiple members.
-
 const App = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: 'Gainsboro',
-        border: 'black',
-        fontSize: '1rem',
-      }}
-    >
+    <Container flexDirection='row'>
       <div>
         <img src={logo} width={'100px'}></img>
       </div>
-      <div>
+      <Container>
         <nav>
           <ul>
             <li>
@@ -43,11 +31,11 @@ const App = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </Container>
       <div>
         <Clock />
       </div>
-    </div>
+    </Container>
   )
 }
 
