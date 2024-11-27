@@ -6,9 +6,10 @@ import {
   Heading2,
   Heading3,
   Input,
-  LoadingPlaceholder,
   SquareButtonCard,
+  Text,
   Text12,
+  TextVisibility,
 } from './Styles'
 import React, { useEffect, useState } from 'react'
 
@@ -129,7 +130,7 @@ const BoardPlate = ({ cells, playersNames }: { cells: Cards[]; playersNames: str
     <div>
       <Container flexDirection='row'>
         <Container>
-          <LoadingPlaceholder loading={loading}>⏳ Loading...</LoadingPlaceholder>
+          <TextVisibility visibility={loading ? 'visible' : 'hidden'}>⏳ Loading...</TextVisibility>
           <Text12>{player ? playersNames[0] : playersNames[1]}</Text12>
           <GridContainer columns={Math.ceil(Math.sqrt(cells.length))}>
             {cards.map(card => (
@@ -147,12 +148,12 @@ const BoardPlate = ({ cells, playersNames }: { cells: Cards[]; playersNames: str
         </Container>
         <Container>
           <Heading3>Score:</Heading3>
-          <text>
+          <Text>
             {playersNames[0]} : {scorePlayerOne}
-          </text>
-          <text>
+          </Text>
+          <Text>
             {playersNames[1]} : {scorePlayerTwo}
-          </text>
+          </Text>
         </Container>
       </Container>
     </div>
