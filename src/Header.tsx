@@ -1,4 +1,5 @@
-import { Container } from './Styles'
+import { Container, TransparentContainer } from './Styles'
+
 import { Link } from 'react-router-dom'
 import Clock from './clock'
 
@@ -15,7 +16,7 @@ const Header = () => {
           />
         </Link>
       </div>
-      <Container>
+      <Container flexDirection='row'>
         <nav>
           <ul>
             <li>
@@ -28,13 +29,17 @@ const Header = () => {
               <Link to='HackerType'>HackerType</Link>
             </li>
             <li>
+              <Link to='MortgageCalculator'>Mortgage Calculator</Link>
+            </li>
+          </ul>
+        </nav>
+        <nav>
+          <ul>
+            <li>
               <Link to='MapsCZ'>Maps CZ - API</Link>
             </li>
             <li>
               <Link to='Weather'>Weather - API</Link>
-            </li>
-            <li>
-              <Link to='MortgageCalculator'>Mortgage Calculator</Link>
             </li>
           </ul>
         </nav>

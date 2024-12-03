@@ -22,6 +22,23 @@ export const Container = styled.div<{
   align-items: ${({ alignItems = 'center' }) => alignItems};
   justify-content: ${({ justifyContent = 'space-between' }) => justifyContent};
 `
+export const TransparentContainer = styled.div<{
+  flexDirection?: string
+  alignItems?: string
+  justifyContent?: string
+  height?: string
+}>`
+  margin: 5px auto;
+  padding: 5px;
+  height: ${({ height = 'auto' }) => height};
+  display: flex;
+  flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
+  align-items: ${({ alignItems = 'center' }) => alignItems};
+  justify-content: ${({ justifyContent = 'space-between' }) => justifyContent};
+  background-color: transparent;
+  box-shadow: none;
+`
+
 export const GridContainer = styled.div<{ columns?: number }>`
   display: grid;
   grid-gap: 10px;
