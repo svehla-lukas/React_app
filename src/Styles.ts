@@ -8,6 +8,7 @@ export const Container = styled.div<{
   flexDirection?: string
   alignItems?: string
   justifyContent?: string
+  height?: string
 }>`
   margin: 5px auto;
   padding: 5px;
@@ -15,6 +16,7 @@ export const Container = styled.div<{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #f7f7f7;
   font-family: Arial, sans-serif;
+  height: ${({ height = 'auto' }) => height};
   display: flex;
   flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
   align-items: ${({ alignItems = 'center' }) => alignItems};
@@ -180,4 +182,20 @@ export const Input = styled.input`
     border-color: #00bfa5;
     box-shadow: 0 0 8px rgba(0, 191, 165, 0.5);
   }
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+`
+
+export const InputLabel = styled.label`
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  color: #333;
+  width: 40%;
 `

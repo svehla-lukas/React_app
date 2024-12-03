@@ -33,6 +33,9 @@ const Header = () => {
             <li>
               <Link to='Weather'>Weather - API</Link>
             </li>
+            <li>
+              <Link to='MortgageCalculator'>Mortgage Calculator</Link>
+            </li>
           </ul>
         </nav>
       </Container>
