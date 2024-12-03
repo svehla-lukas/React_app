@@ -16,7 +16,7 @@ const Header = () => {
           />
         </Link>
       </div>
-      <Container flexDirection='row'>
+      <TransparentContainer flexDirection='row'>
         <nav>
           <ul>
             <li>
@@ -43,7 +43,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-      </Container>
+      </TransparentContainer>
       <div>
         <Clock />
       </div>
