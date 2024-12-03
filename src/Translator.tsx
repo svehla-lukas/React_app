@@ -23,7 +23,6 @@ i18n.use(initReactI18next).init({
         months: 'Months',
         principalPayment: 'Principal Payment',
         interestPayment: 'Interest Payment',
-        amountInCZK: 'Amount in Kč',
       },
     },
     cz: {
@@ -46,7 +45,6 @@ i18n.use(initReactI18next).init({
         months: 'Měsíce',
         principalPayment: 'Splacená jistina',
         interestPayment: 'Zaplacený úrok',
-        amountInCZK: 'Částka v Kč',
       },
     },
   },

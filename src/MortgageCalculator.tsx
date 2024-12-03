@@ -7,6 +7,7 @@ import {
   ChartOptions,
   Legend,
   LinearScale,
+  Title,
   Tooltip,
 } from 'chart.js'
 import {
@@ -134,7 +135,7 @@ const MortgageCalculator = () => {
         y: {
           title: {
             display: true,
-            text: t('amountInCZK'),
+            text: `${t('monthlyInstallment')} ${units.kc}`,
           },
           ticks: {
             callback: function (value) {
@@ -144,7 +145,6 @@ const MortgageCalculator = () => {
         },
       },
     }
-
     return <Bar data={data} options={options} />
   }
 
@@ -220,7 +220,7 @@ const MortgageCalculator = () => {
                   type='number'
                   value={inflationRate}
                   step={0.1}
-                  min={0.1}
+                  min={0}
                   onChange={e => {
                     setInflationRate(Number(e.target.value))
                     handleChange()
@@ -228,7 +228,7 @@ const MortgageCalculator = () => {
                 />
                 <Text>{units.percent}</Text>
               </InputContainer>
-              <InputContainer>
+              {/* <InputContainer>
                 <Text>{t('repaymentType')}:</Text>
                 <Input
                   id='RepaymentType'
@@ -238,7 +238,7 @@ const MortgageCalculator = () => {
                     setRepaymentType(e.target.value)
                   }}
                 />
-              </InputContainer>
+              </InputContainer> */}
             </div>
           </Container>
           <Container flexDirection='column' style={{ padding: '20px', textAlign: 'left' }}>
