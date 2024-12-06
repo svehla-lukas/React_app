@@ -31,6 +31,9 @@ const Header = () => {
             <li>
               <Link to='MortgageCalculator'>Mortgage Calculator</Link>
             </li>
+            <li>
+              <Link to='Regulators'>Regulators</Link>
+            </li>
           </ul>
         </nav>
         <nav>
