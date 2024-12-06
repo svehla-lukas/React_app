@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Bondster from './Bondster'
 import Clock from './clock'
 import HackerType from './HackerType'
 import Header from './Header'
@@ -8,6 +9,7 @@ import MapsCZ from './MapsCZ'
 import MemoryGame from './MemoryGame'
 import MortgageCalculator from './MortgageCalculator'
 import ReactDOM from 'react-dom/client'
+import Regulators from './Regulators'
 import TicTacToe from './gameTTT'
 import Weather from './Weather'
 import reportWebVitals from './reportWebVitals'
@@ -25,6 +27,8 @@ root.render(
       <Route path='Weather' element={<Weather />} />
       <Route path='MapsCZ' element={<MapsCZ />} />
       <Route path='MortgageCalculator' element={<MortgageCalculator />} />
+      <Route path='Bondster' element={<Bondster />} />
+      <Route path='Regulators' element={<Regulators />} />
     </Routes>
   </BrowserRouter>
 )

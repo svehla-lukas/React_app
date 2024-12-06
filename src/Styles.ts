@@ -9,6 +9,7 @@ export const Container = styled.div<{
   alignItems?: string
   justifyContent?: string
   height?: string
+  width?: string
 }>`
   margin: 5px auto;
   padding: 5px;
@@ -17,11 +18,15 @@ export const Container = styled.div<{
   background-color: #f7f7f7;
   font-family: Arial, sans-serif;
   height: ${({ height = 'auto' }) => height};
+  width: ${({ width = 'auto' }) => width};
   display: flex;
   flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
   align-items: ${({ alignItems = 'center' }) => alignItems};
   justify-content: ${({ justifyContent = 'space-between' }) => justifyContent};
+   whiteSpace: 'pre-wrap',;
+   wordWrap: 'break-word;
 `
+
 export const TransparentContainer = styled.div<{
   flexDirection?: string
   alignItems?: string

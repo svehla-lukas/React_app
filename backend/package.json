@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts",
+    "start": "node --loader ts-node/esm src/index.ts"
   },
   "author": "Lukas Svehla",
   "license": "ISC",

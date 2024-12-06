@@ -29,7 +29,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": [],
+  "cSpell.words": ["Bondster"],
   "files.eol": "\r\n",
   "editor.formatOnSave": true
 }
