@@ -29,7 +29,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": [],
+  "cSpell.words": [
+    "lukas",
+    "svehla"
+  ],
   "files.eol": "\r\n",
   "editor.formatOnSave": true
 }

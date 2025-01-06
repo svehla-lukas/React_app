@@ -48,13 +48,7 @@ module.exports = {
     'no-caller': 'error',
     'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1, maxBOF: 0 }],
     'quote-props': ['error', 'as-needed'],
-    'sort-imports-es6-autofix/sort-imports-es6': [
-      'error',
-      {
-        ignoreCase: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
+    'sort-imports-es6-autofix/sort-imports-es6': 'off',
     '@typescript-eslint/ban-ts-comment': 0,
     'no-irregular-whitespace': 'warn',
     'react-hooks/exhaustive-deps': 0,
