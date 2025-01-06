@@ -40,7 +40,7 @@ const HomePage = () => {
             margin: '0 auto',
           }}
         />
-        <Typography variant='h3' sx={{ marginTop: 2 }}>
+        <Typography variant='h1' sx={{ marginTop: 2 }}>
           Lukas Svehla
         </Typography>
         <Typography variant='body1' color='text.secondary'>

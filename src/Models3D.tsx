@@ -85,7 +85,7 @@ const Models3D = () => {
 
             {/* Content */}
             <CardContent>
-              <Typography variant='h6' component='h3' gutterBottom>
+              <Typography variant='h4' component='h3' gutterBottom>
                 {previewData.title}
               </Typography>
               <Typography variant='body2' color='text.secondary'>

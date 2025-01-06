@@ -50,7 +50,7 @@ class TicTacToe extends React.Component {
           // padding: 2,
         }}
       >
-        <Typography variant='h4' sx={{ marginBottom: 2 }}>
+        <Typography variant='h1' sx={{ marginBottom: 2 }}>
           Tic Tac Toe
         </Typography>
         <Divider sx={{ width: '100%', marginBottom: 4 }} />
@@ -143,7 +143,7 @@ class Board extends React.Component<PropsBoard, StateBoard> {
         >
           New Game
         </Button>
-        <Typography variant='h5'>
+        <Typography variant='h2'>
           {this.state.playersPoints.includes(null) === false && this.state.winPlayer === null
             ? 'Match end: Remise'
             : this.state.winPlayer === null

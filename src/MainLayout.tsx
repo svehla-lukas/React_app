@@ -193,7 +193,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>React</Typography>
+              <Typography variant='h3'>React</Typography>
             </Button>
             <Button
               variant='contained'
@@ -203,7 +203,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>Embedded</Typography>
+              <Typography variant='h3'>Embedded</Typography>
             </Button>
             <Button
               variant='contained'
@@ -213,7 +213,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>3D Print</Typography>
+              <Typography variant='h3'>3D Print</Typography>
             </Button>
           </Box>
           <Box
