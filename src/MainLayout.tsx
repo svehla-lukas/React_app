@@ -106,7 +106,7 @@ const MainLayout = () => {
             }}
             onClick={() => setActiveSideItem('stm32')}
           >
-            <ListItemText primary='STM - no index' />
+            <ListItemText primary='no index' />
           </ListItemButton>
         </ListItem>
       </List>
@@ -129,7 +129,7 @@ const MainLayout = () => {
             <ListItemText primary='3D Models' />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
+        {/* <ListItem disablePadding>
           <ListItemButton
             component={Link}
             to='/PrintTutorials'
@@ -145,7 +145,7 @@ const MainLayout = () => {
           >
             <ListItemText primary='Printing Tutorials' />
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
       </List>
     ),
   }
