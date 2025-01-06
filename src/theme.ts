@@ -46,32 +46,32 @@ const theme = createTheme({
 
   typography: {
     h1: {
-      fontSize: '3rem',
+      fontSize: '2rem',
       fontWeight: 700,
       lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2.5rem',
+      fontSize: '1.5rem',
       fontWeight: 600,
       lineHeight: 1.3,
     },
     h3: {
-      fontSize: '2rem',
+      fontSize: '1.25rem',
       fontWeight: 500,
       lineHeight: 1.4,
     },
     h4: {
-      fontSize: '1.75rem',
+      fontSize: '1.15rem',
       fontWeight: 500,
       lineHeight: 1.5,
     },
     h5: {
-      fontSize: '1.5rem',
+      fontSize: '1rem',
       fontWeight: 400,
       lineHeight: 1.6,
     },
     h6: {
-      fontSize: '1.25rem',
+      fontSize: '1rem',
       fontWeight: 400,
       lineHeight: 1.6,
     },
