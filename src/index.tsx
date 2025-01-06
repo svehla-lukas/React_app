@@ -6,6 +6,7 @@ import HomePage from './HomePage'
 import MainLayout from './MainLayout'
 import MapsCZ from './MapsCZ'
 import MemoryGame from './MemoryGame'
+import Models3D from './Models3D'
 import MortgageCalculator from './MortgageCalculator'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@emotion/react'
@@ -30,7 +31,7 @@ root.render(
           <Route path='HackerType' element={<HackerType />} />
           <Route path='Weather' element={<Weather />} />
           <Route path='MapsCZ' element={<MapsCZ />} />
-          {/* <Route path='Models3D' element={<Models3D />} /> */}
+          <Route path='Models3D' element={<Models3D />} />
           <Route path='MortgageCalculator' element={<MortgageCalculator />} />
         </Route>
       </Routes>
