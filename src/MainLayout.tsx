@@ -96,7 +96,7 @@ const MainLayout = () => {
         <ListItem disablePadding>
           <ListItemButton
             component={Link}
-            to='/'
+            to='/CureStation'
             sx={{
               backgroundColor: activeSideItem === 'stm32' ? 'secondary.main' : 'primary.main',
               color: activeSideItem === 'stm32' ? 'white' : 'inherit',
@@ -106,7 +106,7 @@ const MainLayout = () => {
             }}
             onClick={() => setActiveSideItem('stm32')}
           >
-            <ListItemText primary='no index' />
+            <ListItemText primary='Cure station' />
           </ListItemButton>
         </ListItem>
       </List>

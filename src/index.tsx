@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Clock from './clock'
+import CureStation from './CureStation'
 import HackerType from './HackerType'
 import HomePage from './HomePage'
 import MainLayout from './MainLayout'
@@ -28,6 +29,7 @@ root.render(
           <Route path='clock' element={<Clock />} />
           <Route path='gameTTT' element={<TicTacToe />} />
           <Route path='MemoryGame' element={<MemoryGame />} />
+          <Route path='CureStation' element={<CureStation />} />
           <Route path='HackerType' element={<HackerType />} />
           <Route path='Weather' element={<Weather />} />
           <Route path='MapsCZ' element={<MapsCZ />} />
