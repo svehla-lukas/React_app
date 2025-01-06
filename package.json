@@ -5,8 +5,8 @@
   "private": true,
   "dependencies": {
     "@emotion/css": "^11.10.0",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.3.1",
+    "@mui/material": "^6.3.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -65,12 +65,13 @@
     ]
   },
   "devDependencies": {
-    "@emotion/react": "^11.x.x",
-    "@emotion/styled": "^11.x.x",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@types/cors": "^2.8.17",
     "@types/i18next": "^13.0.0",
     "@types/leaflet": "^1.9.13",
     "@types/react-i18next": "^8.1.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "gh-pages": "^6.2.0",
     "pretier": "^0.0.1"
