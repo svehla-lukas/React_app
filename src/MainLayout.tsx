@@ -91,20 +91,20 @@ const MainLayout = () => {
         </ListItem>
       </List>
     ),
-    stm32: (
+    embedded: (
       <List>
         <ListItem disablePadding>
           <ListItemButton
             component={Link}
             to='/CureStation'
             sx={{
-              backgroundColor: activeSideItem === 'stm32' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'stm32' ? 'white' : 'inherit',
+              backgroundColor: activeSideItem === 'embedded' ? 'secondary.main' : 'primary.main',
+              color: activeSideItem === 'embedded' ? 'white' : 'inherit',
               '&:hover': {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('stm32')}
+            onClick={() => setActiveSideItem('embedded')}
           >
             <ListItemText primary='Cure station' />
           </ListItemButton>
@@ -197,13 +197,13 @@ const MainLayout = () => {
             </Button>
             <Button
               variant='contained'
-              color={activeHeaderButton === 'stm32' ? 'secondary' : 'primary'}
+              color={activeHeaderButton === 'embedded' ? 'secondary' : 'primary'}
               onClick={() => {
-                setActiveHeaderButton('stm32')
+                setActiveHeaderButton('embedded')
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>STM32</Typography>
+              <Typography variant='h6'>Embedded</Typography>
             </Button>
             <Button
               variant='contained'
