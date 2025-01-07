@@ -36,7 +36,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('gameTTT')}
+            onClick={() => {
+              setActiveSideItem('gameTTT')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Tic Tac Toe' />
           </ListItemButton>
@@ -51,7 +54,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('MemoryGame')}
+            onClick={() => {
+              setActiveSideItem('MemoryGame')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Memory Game' />
           </ListItemButton>
@@ -67,7 +73,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('HackerType')}
+            onClick={() => {
+              setActiveSideItem('HackerType')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='HackerType' />
           </ListItemButton>
@@ -84,7 +93,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('MortgageCalculator')}
+            onClick={() => {
+              setActiveSideItem('MortgageCalculator')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Mortgage Calculator' />
           </ListItemButton>
@@ -104,7 +116,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('embedded')}
+            onClick={() => {
+              setActiveSideItem('embedded')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Cure station' />
           </ListItemButton>
@@ -124,7 +139,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('Models3D')}
+            onClick={() => {
+              setActiveSideItem('Models3D')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='3D Models' />
           </ListItemButton>
@@ -141,7 +159,8 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('PrintTutorials')}
+            onClick={() => {setActiveSideItem('PrintTutorials')
+            setIsDrawerOpen(false)}}
           >
             <ListItemText primary='Printing Tutorials' />
           </ListItemButton>
