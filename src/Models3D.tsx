@@ -3,11 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 const apiKeyLinkPreview = process.env.REACT_APP_LINKPREVIEW_API_KEY
 
-// const useComponentDidMont = async () => {
-//   const response = await fetch('http://localhost:1234')
-//   console.log(response)
-// }
-
 const Models3D = () => {
   const urls = [
     'https://www.printables.com/model/1131005-eta-cabero-blender',
