@@ -4,8 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import leaflet from 'leaflet'
 
-const apiKeyMapsCz = process.env.REACT_APP_MAPS_CZ_API_KEY
-// const apiKeyMapsCz = 'Tpks2xm6WJ2z5Q6oLf2bu5L-pElWmMqLkRGSqBDenEc'
+const apiKeyMapsCz = process.env.REACT_APP_MAPS_CZ_API_KEYs
 
 const MapsCZ = () => {
   const mapRef = useRef<leaflet.Map | null>(null)

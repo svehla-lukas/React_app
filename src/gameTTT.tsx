@@ -1,3 +1,5 @@
+import { Box, Button, Container, Divider, Paper, Typography } from '@mui/material'
+
 import React from 'react'
 
 type gameSign = null | 'x' | 'o'
@@ -29,14 +31,48 @@ function calculateWinner(playersPoints: gameSign[]) {
 class TicTacToe extends React.Component {
   render() {
     return (
-      <div className='Game'>
-        <h1>XoXoXoXoX --- tic tac toe --- xOxOxOxOx</h1>
-        <hr />
-        <div className='game board'>
-          <Board numberOfSquares={9} />
-        </div>
-        <div className='game info'></div>
-      </div>
+      // <div className='Game'>
+      //   <h1>Tic Tac Toe</h1>
+      //   <hr />
+      //   <div className='game board'>
+      //     <Board numberOfSquares={9} />
+      //   </div>
+      //   <div className='game info'></div>
+      // </div>
+
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '50vh',
+          // padding: 2,
+        }}
+      >
+        <Typography variant='h1' sx={{ marginBottom: 2 }}>
+          Tic Tac Toe
+        </Typography>
+        <Divider sx={{ width: '100%', marginBottom: 4 }} />
+
+        <Paper
+          elevation={3}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 4,
+            maxWidth: '400px',
+            width: '100%',
+            marginBottom: 4,
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Board numberOfSquares={9} />
+          </Box>
+        </Paper>
+      </Container>
     )
   }
 }
@@ -93,62 +129,39 @@ class Board extends React.Component<PropsBoard, StateBoard> {
 
   render() {
     return (
-      <div>
-        <div className='status'>
-          <h2>
-            {this.state.playersPoints.includes(null) === false && this.state.winPlayer === null
-              ? 'Match end: Remise'
-              : this.state.winPlayer === null
-              ? ['Next player: ', '', this.state.whoPlay]
-              : ['Winner is: ', '', this.state.whoPlay === 'x' ? 'o' : 'x']}
-          </h2>
-        </div>
-        <div className='board-head'>
-          <p>
-            <button
-              onClick={() => {
-                this.setState({
-                  whoPlay: 'x',
-                  winPlayer: null,
-                  playersPoints: this.state.playersPoints.map(() => null),
-                })
-              }}
-            >
-              New Game
-            </button>
-          </p>
-        </div>
-        <div
-          className='board-row'
-          style={{
-            display: 'flex',
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={() => {
+            this.setState({
+              whoPlay: 'x',
+              winPlayer: null,
+              playersPoints: this.state.playersPoints.map(() => null),
+            })
           }}
         >
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div
-          className='board-row'
-          style={{
-            display: 'flex',
-          }}
-        >
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div
-          className='board-row'
-          style={{
-            display: 'flex',
-          }}
-        >
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
+          New Game
+        </Button>
+        <Typography variant='h2'>
+          {this.state.playersPoints.includes(null) === false && this.state.winPlayer === null
+            ? 'Match end: Remise'
+            : this.state.winPlayer === null
+            ? `Next player: ${this.state.whoPlay}`
+            : `Winner is: ${this.state.whoPlay === 'x' ? 'o' : 'x'}`}
+        </Typography>
+
+        {/* Board */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          {[0, 3, 6].map(row => (
+            <Box key={row} sx={{ display: 'flex', gap: 1 }}>
+              {this.renderSquare(row)}
+              {this.renderSquare(row + 1)}
+              {this.renderSquare(row + 2)}
+            </Box>
+          ))}
+        </Box>
+      </Box>
     )
   }
 }
