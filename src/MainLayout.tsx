@@ -101,6 +101,25 @@ const MainLayout = () => {
             <ListItemText primary='Mortgage Calculator' />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to='/Regulators'
+            sx={{
+              backgroundColor: activeSideItem === 'Regulators' ? 'secondary.main' : 'primary.main',
+              color: activeSideItem === 'Regulators' ? 'white' : 'inherit',
+              '&:hover': {
+                backgroundColor: 'secondary.light',
+              },
+            }}
+            onClick={() => {
+              setActiveSideItem('Regulators')
+              setIsDrawerOpen(false)
+            }}
+          >
+            <ListItemText primary='PID regulator' />
+          </ListItemButton>
+        </ListItem>
       </List>
     ),
     embedded: (

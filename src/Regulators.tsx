@@ -1,3 +1,4 @@
+import { Box, Paper, Typography } from '@mui/material'
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -245,14 +246,48 @@ const Regulators: React.FC = () => {
         />
       </form>
 
-      <div style={{ marginTop: '40px' }}>
-        <h2>Block Diagram of PID Controller</h2>
-        <img
+      <Box sx={{ marginTop: 4, display: 'flex', justifyContent: 'column', alignItems: 'column' }}>
+        <Box>Block Diagram of PID Controller</Box>
+        <Box
+          component='img'
           src='https://tse3.mm.bing.net/th?id=OIP.H_7jsDPSbM8IUjCFVMwhOwHaDa&pid=Api'
           alt='PID Block Diagram'
-          style={{ width: '80%', maxWidth: '600px', margin: 'auto', display: 'block' }}
+          sx={{
+            width: '80%',
+            maxWidth: 600,
+            margin: 'auto',
+            display: 'block',
+            borderRadius: 1,
+          }}
         />
-      </div>
+      </Box>
+
+      <Box sx={{ marginTop: 4, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 3,
+            maxWidth: 600,
+            backgroundColor: 'background.paper',
+            borderRadius: 2,
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          <Typography variant='h4' gutterBottom align='center'>
+            <strong> Calculation of PID Controller</strong>
+          </Typography>
+          <Typography variant='body1' paragraph>
+            <strong>Proportional </strong> = <code>kp * error</code>
+          </Typography>
+          <Typography variant='body1' paragraph>
+            <strong> Integral </strong> += <code>stepError</code>, then Integral ={' '}
+            <code>ki * integral</code>
+          </Typography>
+          <Typography variant='body1' paragraph>
+            <strong>Derivative </strong>= <code>(error - previous_error) / dt</code>
+          </Typography>
+        </Paper>
+      </Box>
     </div>
   )
 }

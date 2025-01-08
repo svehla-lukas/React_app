@@ -10,8 +10,8 @@ import MemoryGame from './MemoryGame'
 import Models3D from './Models3D'
 import MortgageCalculator from './MortgageCalculator'
 import ReactDOM from 'react-dom/client'
-import { ThemeProvider } from '@emotion/react'
 import Regulators from './Regulators'
+import { ThemeProvider } from '@emotion/react'
 import TicTacToe from './gameTTT'
 import Weather from './Weather'
 import reportWebVitals from './reportWebVitals'
@@ -36,6 +36,7 @@ root.render(
           <Route path='MapsCZ' element={<MapsCZ />} />
           <Route path='Models3D' element={<Models3D />} />
           <Route path='MortgageCalculator' element={<MortgageCalculator />} />
+          <Route path='Regulators' element={<Regulators />} />
         </Route>
       </Routes>
     </BrowserRouter>
