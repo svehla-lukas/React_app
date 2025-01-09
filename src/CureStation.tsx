@@ -41,7 +41,7 @@ const CureStation = () => {
           <GitHubIcon />
         </IconButton>
         <MuiLink
-          href='https://github.com/svehla-lukas/Cure_Station'
+          href='https://github.com/svehla-lukas/Cure_Station/tree/main/Core'
           target='_blank'
           rel='noopener noreferrer'
         >
@@ -222,6 +222,19 @@ return  proportional + integral;`}
           </Typography>
         </Paper>
       </Box>
+      <Paper>
+        <Typography variant='h3'>Výkonová elektronika</Typography>
+        <Typography variant='body1'>
+          Pro napájení topného tělesa i ventilátoru je nutné přidat externí 12 V zdroj, ke kterému
+          se vloží step down měnič (Buck convertor) pro napájení mikrokontroléru.
+        </Typography>
+        <Typography variant='body1'>
+          Topnou spirálu je nutné spouštět přerušovaně, čehož lze docilit buď pomocí relé nebo
+          výkonového tranzisotru. Vzhledem k povaze regulátoru jsem se zvolil variantu tranzisotru.
+          Mos-Fet budew spínán přes pomocný tranzistor PWM signálem z mikrokontroléru, takto můžu
+          plynule regulovat v celém rozsahu napájecího napětí.
+        </Typography>
+      </Paper>
     </Box>
   )
 }
