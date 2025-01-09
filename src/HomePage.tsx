@@ -65,6 +65,7 @@ const HomePage = () => {
             <HomeIcon />
           </IconButton>
           <MuiLink
+            variant='button'
             // href='https:// noremaps.google.com/?q=Brno'
             // target='_blank'
             // rel='noopenerferrer'
@@ -85,7 +86,7 @@ const HomePage = () => {
           >
             <EmailIcon />
           </IconButton>
-          <MuiLink href='mailto:svehl.lukas@gmail.com' rel='noopener noreferrer'>
+          <MuiLink variant='button' href='mailto:svehl.lukas@gmail.com' rel='noopener noreferrer'>
             <Typography>svehl.lukas@gmail.com</Typography>
           </MuiLink>
         </Box>
@@ -101,7 +102,12 @@ const HomePage = () => {
           >
             <GitHubIcon />
           </IconButton>
-          <MuiLink href='https://github.com/svehla-lukas' target='_blank' rel='noopener noreferrer'>
+          <MuiLink
+            variant='button'
+            href='https://github.com/svehla-lukas'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <Typography>GitHub: github.com/svehla-lukas</Typography>
           </MuiLink>
         </Box>
@@ -118,6 +124,7 @@ const HomePage = () => {
             <LinkedInIcon />
           </IconButton>
           <MuiLink
+            variant='button'
             href='https://www.linkedin.com/in/svehla-lukas/'
             target='_blank'
             rel='noopener noreferrer'
