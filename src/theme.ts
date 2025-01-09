@@ -37,7 +37,7 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     success: {
-      main: '#81C784', // Zelená pro úspěšné akce
+      main: '#81C784',
       light: '#A5D6A7',
       dark: '#4CAF50',
       contrastText: '#ffffff',
@@ -81,9 +81,10 @@ const theme = createTheme({
       lineHeight: 1.75,
     },
     subtitle2: {
-      fontSize: '0.875rem',
-      fontWeight: 500,
-      lineHeight: 1.57,
+      color: '#61dafb',
+      fontWeight: 'bold',
+      fontFamily: 'monospace',
+      fontSize: '16px',
     },
     body1: {
       fontSize: '1rem',
@@ -99,7 +100,6 @@ const theme = createTheme({
       fontSize: '0.875rem',
       fontWeight: 500,
     },
-
     caption: {
       fontSize: '0.75rem',
       fontWeight: 400,
@@ -111,8 +111,48 @@ const theme = createTheme({
       textTransform: 'uppercase',
       lineHeight: 2,
     },
+    codeName: {
+      color: '#61dafb',
+      fontWeight: 'bold',
+      fontFamily: 'monospace',
+      fontSize: '16px',
+    },
   },
   components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          padding: '16px',
+          margin: '16px',
+          borderRadius: '8px',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+        },
+        outlined: {
+          margin: '16px',
+          border: '1px solid #ccc',
+        },
+        elevation: {
+          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'codeBox' },
+          style: {
+            backgroundColor: '#282C34',
+            color: '#ABB2BF',
+            fontFamily: 'monospace',
+            fontSize: '14px',
+            padding: '16px',
+            borderRadius: '8px',
+            overflowX: 'auto',
+            whiteSpace: 'pre',
+            border: '1px solid #444',
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          },
+        },
+      ],
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {
@@ -165,13 +205,35 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          color: 'black',
+          color: 'blue',
           textDecoration: 'none',
           '&:hover': {
             textDecoration: 'underline',
           },
         },
       },
+      variants: [
+        {
+          props: { variant: 'body1' },
+          style: {
+            color: 'blue',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+          },
+        },
+        {
+          props: { variant: 'button' },
+          style: {
+            color: 'black',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+          },
+        },
+      ],
     },
   },
 })

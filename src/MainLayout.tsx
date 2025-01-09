@@ -36,7 +36,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('gameTTT')}
+            onClick={() => {
+              setActiveSideItem('gameTTT')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Tic Tac Toe' />
           </ListItemButton>
@@ -51,7 +54,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('MemoryGame')}
+            onClick={() => {
+              setActiveSideItem('MemoryGame')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Memory Game' />
           </ListItemButton>
@@ -67,7 +73,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('HackerType')}
+            onClick={() => {
+              setActiveSideItem('HackerType')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='HackerType' />
           </ListItemButton>
@@ -84,9 +93,31 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('MortgageCalculator')}
+            onClick={() => {
+              setActiveSideItem('MortgageCalculator')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Mortgage Calculator' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to='/Regulators'
+            sx={{
+              backgroundColor: activeSideItem === 'Regulators' ? 'secondary.main' : 'primary.main',
+              color: activeSideItem === 'Regulators' ? 'white' : 'inherit',
+              '&:hover': {
+                backgroundColor: 'secondary.light',
+              },
+            }}
+            onClick={() => {
+              setActiveSideItem('Regulators')
+              setIsDrawerOpen(false)
+            }}
+          >
+            <ListItemText primary='PID regulator' />
           </ListItemButton>
         </ListItem>
       </List>
@@ -104,7 +135,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('embedded')}
+            onClick={() => {
+              setActiveSideItem('embedded')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='Cure station' />
           </ListItemButton>
@@ -124,7 +158,10 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('Models3D')}
+            onClick={() => {
+              setActiveSideItem('Models3D')
+              setIsDrawerOpen(false)
+            }}
           >
             <ListItemText primary='3D Models' />
           </ListItemButton>
@@ -141,7 +178,8 @@ const MainLayout = () => {
                 backgroundColor: 'secondary.light',
               },
             }}
-            onClick={() => setActiveSideItem('PrintTutorials')}
+            onClick={() => {setActiveSideItem('PrintTutorials')
+            setIsDrawerOpen(false)}}
           >
             <ListItemText primary='Printing Tutorials' />
           </ListItemButton>
@@ -193,7 +231,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>React</Typography>
+              <Typography variant='h3'>React</Typography>
             </Button>
             <Button
               variant='contained'
@@ -203,7 +241,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>Embedded</Typography>
+              <Typography variant='h3'>Embedded</Typography>
             </Button>
             <Button
               variant='contained'
@@ -213,7 +251,7 @@ const MainLayout = () => {
                 setIsDrawerOpen(true)
               }}
             >
-              <Typography variant='h6'>3D Print</Typography>
+              <Typography variant='h3'>3D Print</Typography>
             </Button>
           </Box>
           <Box
@@ -279,7 +317,6 @@ const MainLayout = () => {
       <Box sx={{ flexGrow: 1, padding: 3, marginTop: '64px' }}>
         <Outlet />
       </Box>
-      <Box>activeHeaderButton: {activeHeaderButton}</Box>
     </Box>
   )
 }
