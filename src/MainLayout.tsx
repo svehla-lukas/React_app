@@ -97,15 +97,17 @@ const MainLayout = () => {
               alignItems: 'center',
             }}
           >
-            {/* <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='menu'
-              sx={{ mr: 2 }}
-              onClick={p => setIsDrawerOpen(!p)}
-            >
-              <MenuIcon />
-            </IconButton> */}
+            {isMobile && (
+              <IconButton
+                edge='start'
+                color='inherit'
+                aria-label='menu'
+                sx={{ mr: 2 }}
+                onClick={p => setIsDrawerOpen(p => !p)}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
 
             <Link to='/'>
               <img
