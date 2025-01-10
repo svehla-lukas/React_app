@@ -17,15 +17,6 @@ import { Elevator } from '@mui/icons-material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import React from 'react'
 
-const cCode = `
-#include <stdio.h>
-
-int main() {
-    printf("Hello, World!\\n");
-    return 0;
-}
-  `
-
 const CureStation = () => {
   return (
     <Box>
@@ -41,6 +32,7 @@ const CureStation = () => {
           <GitHubIcon />
         </IconButton>
         <MuiLink
+          variant='body1'
           href='https://github.com/svehla-lukas/Cure_Station/tree/main/Core'
           target='_blank'
           rel='noopener noreferrer'
@@ -96,7 +88,7 @@ const CureStation = () => {
 
           <Box
             component='img'
-            src='CureStation/rawControl.webp'
+            src='embedded/rawControl.webp'
             alt='raw control.webp'
             sx={{
               width: { xs: '100%', sm: '500' },

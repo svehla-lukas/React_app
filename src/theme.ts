@@ -290,6 +290,23 @@ const theme = createTheme({
         },
       ],
     },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          // padding: 0,
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          marginBottom: '0px',
+          padding: '2px 0',
+          lineHeight: 1.2,
+          paddingLeft: '20px',
+        },
+      },
+    },
   },
 })
 export default theme

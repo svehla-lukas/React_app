@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Clock from './clock'
 import CureStation from './CureStation'
+import Encoder from './Encoder'
 import HackerType from './HackerType'
 import HomePage from './HomePage'
 import MainLayout from './MainLayout'
@@ -37,6 +38,7 @@ root.render(
           <Route path='Models3D' element={<Models3D />} />
           <Route path='MortgageCalculator' element={<MortgageCalculator />} />
           <Route path='Regulators' element={<Regulators />} />
+          <Route path='Encoder' element={<Encoder />} />
         </Route>
       </Routes>
     </BrowserRouter>

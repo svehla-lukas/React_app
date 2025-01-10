@@ -1,4 +1,4 @@
-import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar } from '@mui/material'
+import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useMediaQuery, useTheme } from '@mui/material'
 
@@ -53,7 +53,10 @@ const MainLayout = () => {
           isMobile && setIsDrawerOpen(false)
         }}
       >
+        <Typography variant='h3'>Projects:</Typography>
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
+        <Typography variant='h3'>Features:</Typography>
+        <Tab value='Encoder' label='Encoder' component={Link} to='/Encoder' />
       </Tabs>
     ),
     print: (
