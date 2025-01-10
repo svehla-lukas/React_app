@@ -55,7 +55,7 @@ const MainLayout = () => {
       >
         <Typography variant='h3'>Projects:</Typography>
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
-        <Typography variant='h3'>Features:</Typography>
+        <Typography variant='h3'>Code snippet:</Typography>
         <Tab value='Encoder' label='Encoder' component={Link} to='/Encoder' />
       </Tabs>
     ),
