@@ -172,11 +172,13 @@ const theme = createTheme({
           },
         }),
         outlined: ({ theme }) => ({
-          borderColor: theme.palette.primary.main,
-          color: theme.palette.primary.main,
+          backgroundColor: theme.palette.secondary.main,
+          color: theme.palette.secondary.contrastText,
+          border: `2px solid rgba(0, 0, 0, 0.1)`,
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
           '&:hover': {
-            borderColor: theme.palette.primary.dark,
-            color: theme.palette.primary.dark,
+            backgroundColor: theme.palette.secondary.dark,
+            boxShadow: '0px 6px 8px rgba(0, 0, 0, 0.3)',
           },
         }),
       },
@@ -195,17 +197,44 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: ({ theme }) => ({
-          fontSize: theme.typography.body2.fontSize,
-          fontWeight: theme.typography.body2.fontWeight,
-          color: theme.palette.text.primary,
+          color: theme.palette.primary.main,
           textDecoration: 'none',
+          fontSize: theme.typography.body1.fontSize,
+          fontWeight: theme.typography.body1.fontWeight,
           '&:hover': {
             color: theme.palette.secondary.main,
             textDecoration: 'underline',
           },
         }),
       },
+      variants: [
+        {
+          props: { variant: 'body1' },
+          style: ({ theme }) => ({
+            color: theme.palette.info.main,
+            fontSize: theme.typography.body1.fontSize,
+            fontWeight: theme.typography.body1.fontWeight,
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+          }),
+        },
+        {
+          props: { variant: 'button' },
+          style: ({ theme }) => ({
+            color: theme.palette.text.primary,
+            fontSize: theme.typography.button.fontSize,
+            fontWeight: theme.typography.button.fontWeight,
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+          }),
+        },
+      ],
     },
+
     MuiTypography: {
       defaultProps: {
         variantMapping: {
@@ -226,6 +255,40 @@ const theme = createTheme({
           color: theme.palette.text.primary,
         }),
       },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(2),
+          margin: theme.spacing(2),
+          borderRadius: theme.shape.borderRadius,
+          boxShadow: theme.shadows[2],
+        }),
+        outlined: ({ theme }) => ({
+          margin: theme.spacing(2),
+          border: `1px solid ${theme.palette.divider}`,
+        }),
+        elevation: ({ theme }) => ({
+          boxShadow: theme.shadows[1],
+        }),
+      },
+      variants: [
+        {
+          props: { variant: 'codeBox' },
+          style: ({ theme }) => ({
+            backgroundColor: '#282C34',
+            color: '#ABB2BF',
+            fontFamily: 'monospace',
+            fontSize: theme.typography.body2.fontSize,
+            padding: theme.spacing(2),
+            borderRadius: theme.shape.borderRadius,
+            overflowX: 'auto',
+            whiteSpace: 'pre',
+            border: `1px solid ${theme.palette.grey[800]}`,
+            boxShadow: theme.shadows[2],
+          }),
+        },
+      ],
     },
   },
 })
