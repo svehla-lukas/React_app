@@ -172,11 +172,13 @@ const theme = createTheme({
           },
         }),
         outlined: ({ theme }) => ({
-          borderColor: theme.palette.primary.main,
-          color: theme.palette.primary.main,
+          backgroundColor: theme.palette.secondary.main,
+          color: theme.palette.secondary.contrastText,
+          border: `2px solid rgba(0, 0, 0, 0.1)`,
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
           '&:hover': {
-            borderColor: theme.palette.primary.dark,
-            color: theme.palette.primary.dark,
+            backgroundColor: theme.palette.secondary.dark,
+            boxShadow: '0px 6px 8px rgba(0, 0, 0, 0.3)',
           },
         }),
       },

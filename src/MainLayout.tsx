@@ -2,6 +2,7 @@ import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar } from '@mui/materi
 import React, { useState } from 'react'
 
 import HomeIcon from '@mui/icons-material/Home'
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Outlet } from 'react-router-dom'
@@ -129,9 +130,25 @@ const MainLayout = () => {
             <IconButton
               edge='start'
               color='inherit'
+              aria-label='scroll-to-top'
+              sx={{ mr: 2 }}
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth', // Pro plynulé rolování
+                })
+              }}
+            >
+              <KeyboardDoubleArrowUpIcon />
+            </IconButton>
+
+            <IconButton
+              component={Link}
+              to='/'
+              edge='start'
+              color='inherit'
               aria-label='home'
               sx={{ mr: 2 }}
-              onClick={p => setIsDrawerOpen(!p)}
             >
               <HomeIcon />
             </IconButton>

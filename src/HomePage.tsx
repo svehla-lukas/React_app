@@ -159,8 +159,7 @@ const HomePage = () => {
         <Typography variant='body1' sx={{ marginBottom: 2 }}></Typography>
 
         <Button
-          variant='contained'
-          color='secondary'
+          variant='outlined'
           href='https://drive.google.com/file/d/17HRc2waXQytg8zd7V1tckjfO8e6yBTzG/view?usp=sharing'
           target='_blank'
           rel='noopener noreferrer'
