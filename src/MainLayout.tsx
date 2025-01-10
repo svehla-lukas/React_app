@@ -1,5 +1,6 @@
 import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar } from '@mui/material'
 import React, { useState } from 'react'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 import HomeIcon from '@mui/icons-material/Home'
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp'
@@ -8,13 +9,16 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [activeHeaderButton, setActiveHeaderButton] = useState(null as string | null)
   const [activeSideItem, setActiveSideItem] = useState(null as string | null)
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
     setActiveHeaderButton(newValue)
-    setIsDrawerOpen(true)
+    isMobile && setIsDrawerOpen(true)
   }
 
   const renderPanelContents = (panelName: string) => panelMappings[panelName] || null
@@ -25,7 +29,7 @@ const MainLayout = () => {
         value={activeSideItem}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
-          setIsDrawerOpen(false)
+          isMobile && setIsDrawerOpen(false)
         }}
       >
         <Tab value='gameTTT' label='Tic Tac Toe' component={Link} to='/gameTTT' />
@@ -46,7 +50,7 @@ const MainLayout = () => {
         value={activeSideItem}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
-          setIsDrawerOpen(false)
+          isMobile && setIsDrawerOpen(false)
         }}
       >
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
@@ -58,7 +62,7 @@ const MainLayout = () => {
         value={activeSideItem}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
-          setIsDrawerOpen(false)
+          isMobile && setIsDrawerOpen(false)
         }}
       >
         <Tab value='Models3D' label='3D Models' component={Link} to='/Models3D' />
@@ -72,12 +76,11 @@ const MainLayout = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-      {/* AppBar */}
       <AppBar
         position='fixed'
         sx={{
           zIndex: theme => theme.zIndex.drawer + 1,
-          width: '100%',
+          width: '96%',
         }}
       >
         <Toolbar
@@ -156,7 +159,7 @@ const MainLayout = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Side panel */}
+      {/* desktop panel */}
       <Drawer
         variant='permanent'
         sx={{
@@ -165,8 +168,6 @@ const MainLayout = () => {
           [`& .MuiDrawer-paper`]: {
             width: '20%',
             boxSizing: 'border-box',
-            backgroundColor: 'primary.main',
-            color: 'white',
           },
         }}
       >
@@ -179,13 +180,14 @@ const MainLayout = () => {
         anchor='left'
         open={isDrawerOpen}
         onClose={toggleDrawer}
+        ModalProps={{
+          keepMounted: true, // Better power on mobil phones
+        }}
         sx={{
           display: { xs: 'block', sm: 'none' },
           '& .MuiDrawer-paper': {
             width: '60%',
             padding: 2,
-            backgroundColor: 'primary.main',
-            color: 'white',
           },
         }}
       >
@@ -196,14 +198,14 @@ const MainLayout = () => {
       {/* Main Content */}
       <Box
         sx={{
-          display: 'flex',
           flexGrow: 1,
           flexDirection: 'column',
-          width: isDrawerOpen ? 'calc(100% - 20%)' : '100%',
-          marginLeft: '20%',
+          display: 'flex',
           padding: 3,
-          marginTop: '64px',
+          marginTop: '100px',
           overflowY: 'auto',
+          width: !isMobile ? 'calc(100% - 20%)' : '100%',
+          marginLeft: !isMobile ? '20%' : '0%',
         }}
       >
         <Outlet />
