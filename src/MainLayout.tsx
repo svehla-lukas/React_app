@@ -1,190 +1,67 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from '@mui/material'
+import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar } from '@mui/material'
 import React, { useState } from 'react'
 
+import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [activeHeaderButton, setActiveHeaderButton] = useState<string | null>(null)
-  const [activeSideItem, setActiveSideItem] = useState<string | null>(null)
+  const [activeHeaderButton, setActiveHeaderButton] = useState(null as string | null)
+  const [activeSideItem, setActiveSideItem] = useState(null as string | null)
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+    setActiveHeaderButton(newValue)
+    setIsDrawerOpen(true)
+  }
 
   const renderPanelContents = (panelName: string) => panelMappings[panelName] || null
   const panelMappings: Record<string, React.ReactNode> = {
     react: (
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/gameTTT'
-            sx={{
-              backgroundColor: activeSideItem === 'gameTTT' ? 'secondary.main' : 'primary.main',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('gameTTT')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='Tic Tac Toe' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/MemoryGame'
-            sx={{
-              backgroundColor: activeSideItem === 'MemoryGame' ? 'secondary.main' : 'primary.main',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('MemoryGame')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='Memory Game' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/HackerType'
-            sx={{
-              backgroundColor: activeSideItem === 'HackerType' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'HackerType' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('HackerType')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='HackerType' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/MortgageCalculator'
-            sx={{
-              backgroundColor:
-                activeSideItem === 'MortgageCalculator' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'MortgageCalculator' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('MortgageCalculator')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='Mortgage Calculator' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/Regulators'
-            sx={{
-              backgroundColor: activeSideItem === 'Regulators' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'Regulators' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('Regulators')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='PID regulator' />
-          </ListItemButton>
-        </ListItem>
-      </List>
+      <Tabs
+        orientation='vertical'
+        value={activeSideItem}
+        onChange={(event, newValue) => {
+          setActiveSideItem(newValue)
+          setIsDrawerOpen(false)
+        }}
+      >
+        <Tab value='gameTTT' label='Tic Tac Toe' component={Link} to='/gameTTT' />
+        <Tab value='MemoryGame' label='Memory Game' component={Link} to='/MemoryGame' />
+        <Tab value='HackerType' label='HackerType' component={Link} to='/HackerType' />
+        <Tab
+          value='MortgageCalculator'
+          label='Mortgage Calculator'
+          component={Link}
+          to='/MortgageCalculator'
+        />
+        <Tab value='Regulators' label='PID regulator' component={Link} to='/Regulators' />
+      </Tabs>
     ),
     embedded: (
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/CureStation'
-            sx={{
-              backgroundColor: activeSideItem === 'embedded' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'embedded' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('embedded')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='Cure station' />
-          </ListItemButton>
-        </ListItem>
-      </List>
+      <Tabs
+        orientation='vertical'
+        value={activeSideItem}
+        onChange={(event, newValue) => {
+          setActiveSideItem(newValue)
+          setIsDrawerOpen(false)
+        }}
+      >
+        <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
+      </Tabs>
     ),
     print: (
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/Models3D'
-            sx={{
-              backgroundColor: activeSideItem === 'Models3D' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'Models3D' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {
-              setActiveSideItem('Models3D')
-              setIsDrawerOpen(false)
-            }}
-          >
-            <ListItemText primary='3D Models' />
-          </ListItemButton>
-        </ListItem>
-        {/* <ListItem disablePadding>
-          <ListItemButton
-            component={Link}
-            to='/PrintTutorials'
-            sx={{
-              backgroundColor:
-                activeSideItem === 'PrintTutorials' ? 'secondary.main' : 'primary.main',
-              color: activeSideItem === 'PrintTutorials' ? 'white' : 'inherit',
-              '&:hover': {
-                backgroundColor: 'secondary.light',
-              },
-            }}
-            onClick={() => {setActiveSideItem('PrintTutorials')
-            setIsDrawerOpen(false)}}
-          >
-            <ListItemText primary='Printing Tutorials' />
-          </ListItemButton>
-        </ListItem> */}
-      </List>
+      <Tabs
+        orientation='vertical'
+        value={activeSideItem}
+        onChange={(event, newValue) => {
+          setActiveSideItem(newValue)
+          setIsDrawerOpen(false)
+        }}
+      >
+        <Tab value='Models3D' label='3D Models' component={Link} to='/Models3D' />
+      </Tabs>
     ),
   }
 
@@ -193,19 +70,39 @@ const MainLayout = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
       {/* AppBar */}
       <AppBar
         position='fixed'
         sx={{
           zIndex: theme => theme.zIndex.drawer + 1,
-          display: 'flex',
-          alignItems: 'center',
-          paddingX: 2,
+          width: '100%',
         }}
       >
-        <Toolbar sx={{ display: 'flex', width: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Toolbar
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {/* <IconButton
+              edge='start'
+              color='inherit'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+              onClick={p => setIsDrawerOpen(!p)}
+            >
+              <MenuIcon />
+            </IconButton> */}
+
             <Link to='/'>
               <img
                 src={`${process.env.PUBLIC_URL}/logo.png`}
@@ -215,61 +112,28 @@ const MainLayout = () => {
               />
             </Link>
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 2,
-              flexGrow: 1,
-              justifyContent: 'center',
-            }}
-          >
-            <Button
-              variant='contained'
-              color={activeHeaderButton === 'react' ? 'secondary' : 'primary'}
-              onClick={() => {
-                setActiveHeaderButton('react')
-                setIsDrawerOpen(true)
-              }}
+
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+            <Tabs
+              value={activeHeaderButton}
+              onChange={handleTabChange}
+              // centered
             >
-              <Typography variant='h3'>React</Typography>
-            </Button>
-            <Button
-              variant='contained'
-              color={activeHeaderButton === 'embedded' ? 'secondary' : 'primary'}
-              onClick={() => {
-                setActiveHeaderButton('embedded')
-                setIsDrawerOpen(true)
-              }}
-            >
-              <Typography variant='h3'>Embedded</Typography>
-            </Button>
-            <Button
-              variant='contained'
-              color={activeHeaderButton === 'print' ? 'secondary' : 'primary'}
-              onClick={() => {
-                setActiveHeaderButton('print')
-                setIsDrawerOpen(true)
-              }}
-            >
-              <Typography variant='h3'>3D Print</Typography>
-            </Button>
+              <Tab value='react' label='React' />
+              <Tab value='embedded' label='Embedded' />
+              <Tab value='print' label='3D' />
+            </Tabs>
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              marginLeft: 'auto',
-              gap: 2,
-            }}
-          >
+
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
-              onClick={toggleDrawer}
-              sx={{
-                display: { xs: 'flex', sm: 'none' },
-                color: 'white',
-              }}
+              edge='start'
+              color='inherit'
+              aria-label='home'
+              sx={{ mr: 2 }}
+              onClick={p => setIsDrawerOpen(!p)}
             >
-              <MenuIcon />
+              <HomeIcon />
             </IconButton>
           </Box>
         </Toolbar>
@@ -280,7 +144,6 @@ const MainLayout = () => {
         variant='permanent'
         sx={{
           display: { xs: 'none', sm: 'block' },
-          width: '20%',
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
             width: '20%',
@@ -314,7 +177,18 @@ const MainLayout = () => {
       </Drawer>
 
       {/* Main Content */}
-      <Box sx={{ flexGrow: 1, padding: 3, marginTop: '64px' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexGrow: 1,
+          flexDirection: 'column',
+          width: 'calc(100% - 20%)',
+          marginLeft: '20%',
+          padding: 3,
+          marginTop: '64px',
+          overflowY: 'auto',
+        }}
+      >
         <Outlet />
       </Box>
     </Box>

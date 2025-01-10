@@ -106,7 +106,7 @@ const CureStation = () => {
           />
         </Paper>
         <Paper>
-          <Typography variant='h3'>LCD</Typography>
+          <Typography variant='h1'>LCD</Typography>
           <Typography variant='body1'>
             Ze zásob jsem vytáhnul LCD displej - 16x2 znaků, s I2C komunikaci.
           </Typography>
@@ -119,7 +119,7 @@ const CureStation = () => {
               {' '}
               DeepBlueMbedded
             </MuiLink>
-            <Typography variant='h3'>Menu</Typography>
+            <Typography variant='h1'>Menu</Typography>
           </Typography>
           <Typography variant='body1'>
             V menu se pohybuje pomocí encode a uživatel zde nastaví čas a požadovanou teplotu.
@@ -150,7 +150,7 @@ const CureStation = () => {
           </Typography>
         </Paper>
         <Paper>
-          <Typography variant='h3'>Encoder</Typography>
+          <Typography variant='h1'>Encoder</Typography>
           <Typography variant='body1'>
             První myšlenkou bylo samozřejmě použití TIM v módu encoder. Mám však špatné zkušenosti s
             propojením enkodéru z Číny s TIM. Tento mód nefunguje spolehlivě, a proto jsem našel
@@ -191,7 +191,7 @@ const CureStation = () => {
           </Typography>
         </Paper>
         <Paper>
-          <Typography variant='h3'>PI Regulátor</Typography>
+          <Typography variant='h1'>PI Regulátor</Typography>
           <Typography variant='body1'>
             Pro udržování teploty byl implementován PI regulátor. Vzhledem k tomu, že teplota má
             velkou setrvačnost, byl zvolen krok 0,5 sekundy. Pro I složku byl přidán anti-windup,
@@ -223,7 +223,7 @@ return  proportional + integral;`}
         </Paper>
       </Box>
       <Paper>
-        <Typography variant='h3'>Výkonová elektronika</Typography>
+        <Typography variant='h1'>Výkonová elektronika</Typography>
         <Typography variant='body1'>
           Pro napájení topného tělesa i ventilátoru je nutné přidat externí 12 V zdroj, ke kterému
           se vloží step down měnič (Buck convertor) pro napájení mikrokontroléru.

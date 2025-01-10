@@ -46,192 +46,244 @@ const theme = createTheme({
 
   typography: {
     h1: {
-      fontSize: '3rem',
+      fontSize: 'clamp(1.5rem, 2vw, 2rem)',
       fontWeight: 700,
       lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2.5rem',
+      fontSize: 'clamp(1.125rem, 1.5vw, 1.5rem)',
       fontWeight: 600,
       lineHeight: 1.3,
     },
     h3: {
-      fontSize: '2rem',
+      fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
       fontWeight: 500,
       lineHeight: 1.4,
     },
     h4: {
-      fontSize: '1.75rem',
+      fontSize: 'clamp(0.875rem, 1vw, 1.15rem)',
       fontWeight: 500,
       lineHeight: 1.5,
     },
     h5: {
-      fontSize: '1.5rem',
+      fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.6,
     },
     h6: {
-      fontSize: '1.25rem',
+      fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.6,
     },
     subtitle1: {
-      fontSize: '1rem',
+      fontSize: 'clamp(0.875rem, 1vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.75,
     },
     subtitle2: {
-      color: '#61dafb',
-      fontWeight: 'bold',
-      fontFamily: 'monospace',
-      fontSize: '16px',
+      fontSize: 'clamp(0.75rem, 0.9vw, 0.875rem)',
+      fontWeight: 500,
+      lineHeight: 1.57,
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: 'clamp(0.875rem, 1vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.5,
     },
     body2: {
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.75rem, 0.9vw, 0.875rem)',
       fontWeight: 400,
       lineHeight: 1.43,
     },
     button: {
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.75rem, 0.9vw, 0.875rem)',
       fontWeight: 500,
     },
     caption: {
-      fontSize: '0.75rem',
+      fontSize: 'clamp(0.625rem, 0.8vw, 0.75rem)',
       fontWeight: 400,
       lineHeight: 1.66,
     },
     overline: {
-      fontSize: '0.75rem',
+      fontSize: 'clamp(0.625rem, 0.8vw, 0.75rem)',
       fontWeight: 400,
       textTransform: 'uppercase',
       lineHeight: 2,
     },
-    codeName: {
-      color: '#61dafb',
-      fontWeight: 'bold',
-      fontFamily: 'monospace',
-      fontSize: '16px',
-    },
   },
+
   components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          padding: '16px',
-          margin: '16px',
-          borderRadius: '8px',
-          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-        },
-        outlined: {
-          margin: '16px',
-          border: '1px solid #ccc',
-        },
-        elevation: {
-          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-        },
+    MuiTabs: {
+      defaultProps: {
+        variant: 'scrollable',
+        scrollButtons: 'auto',
       },
-      variants: [
-        {
-          props: { variant: 'codeBox' },
-          style: {
-            backgroundColor: '#282C34',
-            color: '#ABB2BF',
-            fontFamily: 'monospace',
-            fontSize: '14px',
-            padding: '16px',
-            borderRadius: '8px',
-            overflowX: 'auto',
-            whiteSpace: 'pre',
-            border: '1px solid #444',
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+      styleOverrides: {
+        indicator: ({ theme }) => ({
+          backgroundColor: theme.palette.secondary.main,
+        }),
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          fontSize: theme.typography.h3.fontSize,
+          fontWeight: theme.typography.h3.fontWeight,
+          textTransform: 'none',
+          color: theme.palette.primary.contrastText,
+          '&.Mui-selected': {
+            color: theme.palette.secondary.main,
           },
-        },
-      ],
+        }),
+      },
     },
     MuiListItemButton: {
       styleOverrides: {
-        root: {
-          borderRadius: 10,
-          padding: '8px 16px',
+        root: ({ theme, ownerState }) => ({
+          fontSize: theme.typography.body1.fontSize,
+          fontWeight: theme.typography.body1.fontWeight,
+          backgroundColor: ownerState.active
+            ? theme.palette.secondary.main
+            : theme.palette.primary.main,
+          color: ownerState.active ? theme.palette.common.white : theme.palette.text.primary,
           '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            backgroundColor: theme.palette.secondary.light,
           },
-          '&.Mui-selected': {
-            backgroundColor: 'rgba(0, 0, 0, 0.2)',
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.3)',
-            },
-          },
-        },
+        }),
       },
     },
     MuiButton: {
       styleOverrides: {
-        root: {
-          borderRadius: 8,
+        root: ({ theme }) => ({
+          fontSize: theme.typography.button.fontSize,
+          fontWeight: theme.typography.button.fontWeight,
           textTransform: 'none',
-        },
-        contained: {
-          border: '2px solid rgba(0, 0, 0, 0.1)',
+          color: theme.palette.text.primary,
+          borderRadius: 8,
+        }),
+        contained: ({ theme }) => ({
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.primary.contrastText,
+          border: `2px solid rgba(0, 0, 0, 0.1)`,
           boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
           '&:hover': {
+            backgroundColor: theme.palette.primary.dark,
             boxShadow: '0px 6px 8px rgba(0, 0, 0, 0.3)',
           },
-        },
-        outlined: {
-          borderColor: '#1976d2',
+        }),
+        outlined: ({ theme }) => ({
+          borderColor: theme.palette.primary.main,
+          color: theme.palette.primary.main,
           '&:hover': {
-            borderColor: '#004ba0',
+            borderColor: theme.palette.primary.dark,
+            color: theme.palette.primary.dark,
           },
-        },
+        }),
       },
     },
     MuiDrawer: {
       styleOverrides: {
-        paper: {
+        paper: ({ theme }) => ({
           width: '20%',
-          backgroundColor: '#1976d2',
-          color: 'white',
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.primary.contrastText,
           padding: '16px',
           boxSizing: 'border-box',
-        },
+        }),
       },
     },
     MuiLink: {
       styleOverrides: {
-        root: {
-          color: 'blue',
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
           textDecoration: 'none',
+          fontSize: theme.typography.body1.fontSize,
+          fontWeight: theme.typography.body1.fontWeight,
           '&:hover': {
             textDecoration: 'underline',
           },
-        },
+        }),
       },
       variants: [
         {
           props: { variant: 'body1' },
-          style: {
-            color: 'blue',
+          style: ({ theme }) => ({
+            color: theme.palette.info.main,
+            fontSize: theme.typography.body1.fontSize,
+            fontWeight: theme.typography.body1.fontWeight,
             textDecoration: 'none',
             '&:hover': {
               textDecoration: 'underline',
             },
-          },
+          }),
         },
         {
           props: { variant: 'button' },
-          style: {
-            color: 'black',
+          style: ({ theme }) => ({
+            color: theme.palette.text.primary,
+            fontSize: theme.typography.button.fontSize,
+            fontWeight: theme.typography.button.fontWeight,
             textDecoration: 'none',
             '&:hover': {
               textDecoration: 'underline',
             },
-          },
+          }),
+        },
+      ],
+    },
+
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          h1: 'h1',
+          h2: 'h2',
+          h3: 'h3',
+          h4: 'h4',
+          h5: 'h5',
+          h6: 'h6',
+          subtitle1: 'h6',
+          subtitle2: 'h6',
+          body1: 'p',
+          body2: 'p',
+        },
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.text.primary,
+        }),
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(2),
+          margin: theme.spacing(2),
+          borderRadius: theme.shape.borderRadius,
+          boxShadow: theme.shadows[2],
+        }),
+        outlined: ({ theme }) => ({
+          margin: theme.spacing(2),
+          border: `1px solid ${theme.palette.divider}`,
+        }),
+        elevation: ({ theme }) => ({
+          boxShadow: theme.shadows[1],
+        }),
+      },
+      variants: [
+        {
+          props: { variant: 'codeBox' },
+          style: ({ theme }) => ({
+            backgroundColor: '#282C34',
+            color: '#ABB2BF',
+            fontFamily: 'monospace',
+            fontSize: theme.typography.body2.fontSize,
+            padding: theme.spacing(2),
+            borderRadius: theme.shape.borderRadius,
+            overflowX: 'auto',
+            whiteSpace: 'pre',
+            border: `1px solid ${theme.palette.grey[800]}`,
+            boxShadow: theme.shadows[2],
+          }),
         },
       ],
     },
