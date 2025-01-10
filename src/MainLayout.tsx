@@ -199,7 +199,7 @@ const MainLayout = () => {
           display: 'flex',
           flexGrow: 1,
           flexDirection: 'column',
-          width: 'calc(100% - 20%)',
+          width: isDrawerOpen ? 'calc(100% - 20%)' : '100%',
           marginLeft: '20%',
           padding: 3,
           marginTop: '64px',
