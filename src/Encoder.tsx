@@ -1,21 +1,15 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  IconButton,
-  List,
-  ListItem,
-  Link as MuiLink,
-  Paper,
-  Typography,
-} from '@mui/material'
+import { Box, List, ListItem, Link as MuiLink, Paper, Typography } from '@mui/material'
 
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { alignProperty } from '@mui/material/styles/cssUtils'
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const Encoder = () => {
+  const commonSyntaxStyle = {
+    tabSize: 2,
+    whiteSpace: 'pre-wrap',
+  }
+
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
@@ -23,7 +17,7 @@ const Encoder = () => {
         <Box
           component='img'
           src='embedded/encoderPhoto.png'
-          alt='encoder CCW'
+          alt='img encoder CCW'
           sx={{
             width: { xs: '100%', sm: '300px' },
             height: 'auto',
@@ -60,10 +54,7 @@ const Encoder = () => {
           <SyntaxHighlighter
             language='c'
             style={darcula}
-            customStyle={{
-              tabSize: 2,
-              whiteSpace: 'pre-wrap',
-            }}
+            customStyle={commonSyntaxStyle}
             showLineNumbers
           >
             {`void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -88,7 +79,7 @@ const Encoder = () => {
         <Box
           component='img'
           src='embedded/encoderCW.webp'
-          alt='encoder CCW'
+          alt='img encoder CCW'
           sx={{
             width: { xs: '100%', sm: '350px' },
             height: 'auto',
@@ -134,38 +125,13 @@ const Encoder = () => {
             <ListItem>prevA = False; prevB = True.</ListItem>
           </List>
         </Typography>
-
-        {/* <Paper variant='codeBox'>
-          <SyntaxHighlighter
-            language='c'
-            style={darcula}
-            customStyle={{
-              tabSize: 2,
-              whiteSpace: 'pre-wrap',
-            }}
-            showLineNumbers
-          >{`void handleEncoderInterrupt(uint16_t GPIO_Pin) {
-	static GPIO_PinState A, B, prevA = GPIO_PIN_SET, prevB = GPIO_PIN_SET;
-  if (GPIO_Pin == GPIO_PIN_0) {
-    // CW decoder
-    B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-     if (B != prevB) {
-      if (B == GPIO_PIN_SET) {
-        if (A == GPIO_PIN_RESET) {
-          encoderCallback(MENU_LEFT);
-        }
-      }
-      prevB = B;
-    }
-  }`}</SyntaxHighlighter>
-        </Paper> */}
       </Paper>
       <Paper>
         <Typography variant='h2'>CCW = direction</Typography>
         <Box
           component='img'
           src='embedded/encoderCCW.webp'
-          alt='encoder CW'
+          alt='img encoder CW'
           sx={{
             width: { xs: '100%', sm: '500px' },
             height: 'auto',
@@ -176,17 +142,22 @@ const Encoder = () => {
 
       <Paper>
         <Typography variant='h1'>Komplení kód</Typography>
-
         <Paper variant='codeBox'>
           <SyntaxHighlighter
             language='c'
             style={darcula}
-            customStyle={{
-              tabSize: 2,
-              whiteSpace: 'pre-wrap',
-            }}
+            customStyle={commonSyntaxStyle}
             showLineNumbers
-          >{`void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+          >
+            {codeSnippet}
+          </SyntaxHighlighter>
+        </Paper>
+      </Paper>
+    </Box>
+  )
+}
+
+const codeSnippet = `void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   static GPIO_PinState A, B, prevA = GPIO_PIN_SET, prevB = GPIO_PIN_SET;
   if (GPIO_Pin == GPIO_PIN_0) {
     // CW decoder
@@ -213,12 +184,5 @@ const Encoder = () => {
     }
   }
 
-}`}</SyntaxHighlighter>
-        </Paper>
-      </Paper>
-      <Typography variant='body1'></Typography>
-      <Typography variant='body1'></Typography>
-    </Box>
-  )
-}
+}`
 export default Encoder
