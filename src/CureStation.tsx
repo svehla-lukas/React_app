@@ -1,23 +1,16 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Link as MuiLink,
-  Paper,
-  Typography,
-} from '@mui/material'
+import { Box, IconButton, Link as MuiLink, Paper, Typography } from '@mui/material'
 
-import CircleIcon from '@mui/icons-material/Circle'
-import { Elevator } from '@mui/icons-material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const CureStation = () => {
+  const commonSyntaxStyle = {
+    tabSize: 2,
+    whiteSpace: 'pre-wrap',
+  }
+
   return (
     <Box>
       <Typography variant='h1'>Cure station Git repository: </Typography>
@@ -120,25 +113,23 @@ const CureStation = () => {
               <li>Požadovanou teplotu</li>
             </ul> */}
             <Typography>Menu je složené z itemů s struktůrou:</Typography>
-            <Paper variant='codeBox'>
-              {`typedef struct MenuItem{
-  char name[16];
-  struct MenuItem *parent;
-  struct MenuItem **children;
-  uint8_t numChildren;
-  char action[6];
-  uint16_t value;
-} MenuItem;`}
-            </Paper>
+            <SyntaxHighlighter
+              language='c'
+              style={darcula}
+              customStyle={commonSyntaxStyle}
+              showLineNumbers
+            >
+              {codeMenu}
+            </SyntaxHighlighter>
             Díki tomu se zle pohybovat mezi v menu pomocí pointeru na rodiře a děti atd..
-            <Paper variant='codeBox'>
-              {`if (currentMenuItem->children && currentMenuItem->numChildren > 0) {
-  currentMenuItem = currentMenuItem->children[0];
-} else if (currentMenuItem->parent) {
-  currentMenuItem = currentMenuItem->parent;
-}
-`}
-            </Paper>
+            <SyntaxHighlighter
+              language='c'
+              style={darcula}
+              customStyle={commonSyntaxStyle}
+              showLineNumbers
+            >
+              {codeMenuChange}
+            </SyntaxHighlighter>
           </Typography>
         </Paper>
         <Paper>
@@ -158,28 +149,14 @@ const CureStation = () => {
             <Typography variant='body1'>
               Lze implementovat debounce, ale nestalose mi že by encoder přeskakoval.
             </Typography>
-            <Paper variant='codeBox'>
-              <Typography variant='codeName'>
-                void handleEncoderInterrupt(uint16_t GPIO_Pin){' '}
-              </Typography>
-              <pre>
-                <code>
-                  {`if (GPIO_Pin == GPIO_PIN_0) {
-  // CCW decoder
-  B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-  if (B != prevB) {
-    if (B == GPIO_PIN_SET) {
-      if (A == GPIO_PIN_RESET) {
-        encoderCallback(MENU_LEFT);
-      }
-    }
-    prevB = B;
-  }
-  ...
-}`}
-                </code>
-              </pre>
-            </Paper>
+            <SyntaxHighlighter
+              language='c'
+              style={darcula}
+              customStyle={commonSyntaxStyle}
+              showLineNumbers
+            >
+              {codeEncoderSnippet}
+            </SyntaxHighlighter>
           </Typography>
         </Paper>
         <Paper>
@@ -189,24 +166,14 @@ const CureStation = () => {
             velkou setrvačnost, byl zvolen krok 0,5 sekundy. Pro I složku byl přidán anti-windup,
             což je saturace I složky, aby se nemohla integrovat do nekonečna.
           </Typography>
-          <Paper variant='codeBox'>
-            {`
-float error = setpoint - measuredValue;
-
-float proportional = pid->kp * error; // P
-
-// I
-pid->integral += error * dt;
-// anti wind-up
-if (pid->integral > errorLimit) {
-  pid->integral = errorLimit;
-} else if (pid->integral < -errorLimit) {
-  pid->integral = -errorLimit;
-}
-float integral = pid->ki * pid->integral;
-
-return  proportional + integral;`}
-          </Paper>
+          <SyntaxHighlighter
+            language='c'
+            style={darcula}
+            customStyle={commonSyntaxStyle}
+            showLineNumbers
+          >
+            {codePiRegulator}
+          </SyntaxHighlighter>
           <Typography variant='body1'>
             Výstup regulátoru je normalizován do hodnoty 0–1. Tato hodnota se zapisuje do střídy PWM
             generátoru, který ovládá výkon na topné spirále. Pokud regulace spadne do záporných
@@ -230,4 +197,49 @@ return  proportional + integral;`}
     </Box>
   )
 }
+
+const codeMenu = `typedef struct MenuItem{
+  char name[16];
+  struct MenuItem *parent;
+  struct MenuItem **children;
+  uint8_t numChildren;
+  char action[6];
+  uint16_t value;
+} MenuItem;`
+
+const codeMenuChange = `if (currentMenuItem->children && currentMenuItem->numChildren > 0) {
+  currentMenuItem = currentMenuItem->children[0];
+} else if (currentMenuItem->parent) {
+  currentMenuItem = currentMenuItem->parent;
+}`
+const codeEncoderSnippet = `void handleEncoderInterrupt(uint16_t GPIO_Pin) { 
+  if (GPIO_Pin == GPIO_PIN_0) {
+  // CCW decoder
+  B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+  if (B != prevB) {
+    if (B == GPIO_PIN_SET) {
+      if (A == GPIO_PIN_RESET) {
+        encoderCallback(MENU_LEFT);
+      }
+    }
+    prevB = B;
+  }
+  ...
+}`
+
+const codePiRegulator = `
+float error = setpoint - measuredValue;
+// P
+float proportional = pid->kp * error; 
+// I
+pid->integral += error * dt;
+// anti wind-up
+if (pid->integral > errorLimit) {
+  pid->integral = errorLimit;
+} else if (pid->integral < -errorLimit) {
+  pid->integral = -errorLimit;
+}
+float integral = pid->ki * pid->integral;
+// Output
+return  proportional + integral;`
 export default CureStation
