@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Clock from './clock'
+import CodeSnippetMemoryAllocate from './CodeSnippet'
 import CureStation from './CureStation'
 import Encoder from './Encoder'
 import HackerType from './HackerType'
@@ -39,6 +40,7 @@ root.render(
           <Route path='MortgageCalculator' element={<MortgageCalculator />} />
           <Route path='Regulators' element={<Regulators />} />
           <Route path='Encoder' element={<Encoder />} />
+          <Route path='CodeSnippetMemoryAllocate' element={<CodeSnippetMemoryAllocate />} />
         </Route>
       </Routes>
     </BrowserRouter>
