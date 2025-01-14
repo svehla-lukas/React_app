@@ -50,6 +50,7 @@ const MainLayout = () => {
         }}
       >
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
+        <Tab value='C-Memory' label='C-Memory' component={Link} to='/CodeSnippetMemoryAllocate' />
       </Tabs>
     ),
     print: (

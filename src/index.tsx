@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Clock from './clock'
+import CodeSnippetMemoryAllocate from './CodeSnippet'
 import CureStation from './CureStation'
 import HackerType from './HackerType'
 import HomePage from './HomePage'
@@ -35,6 +36,7 @@ root.render(
           <Route path='MapsCZ' element={<MapsCZ />} />
           <Route path='Models3D' element={<Models3D />} />
           <Route path='MortgageCalculator' element={<MortgageCalculator />} />
+          <Route path='CodeSnippetMemoryAllocate' element={<CodeSnippetMemoryAllocate />} />
         </Route>
       </Routes>
     </BrowserRouter>
