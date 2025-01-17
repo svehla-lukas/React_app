@@ -64,7 +64,7 @@ const MainLayout = () => {
           to='/CodeSnippetMemoryAllocate'
         />
         <Typography variant='h3'>Libraries:</Typography>
-        <Tab value='TBD' label='TBD' component={Link} to='/' />
+        <Tab value='PCF8591' label='PCF8591' component={Link} to='/PCF8591' />
       </Tabs>
     ),
     print: (

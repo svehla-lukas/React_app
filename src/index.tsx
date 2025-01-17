@@ -11,6 +11,7 @@ import MapsCZ from './MapsCZ'
 import MemoryGame from './MemoryGame'
 import Models3D from './Models3D'
 import MortgageCalculator from './MortgageCalculator'
+import PCF8591 from './LibrariesArticles'
 import ReactDOM from 'react-dom/client'
 import Regulators from './Regulators'
 import { ThemeProvider } from '@emotion/react'
@@ -41,6 +42,7 @@ root.render(
           <Route path='Regulators' element={<Regulators />} />
           <Route path='Encoder' element={<Encoder />} />
           <Route path='CodeSnippetMemoryAllocate' element={<CodeSnippetMemoryAllocate />} />
+          <Route path='PCF8591' element={<PCF8591 />} />
         </Route>
       </Routes>
     </BrowserRouter>
