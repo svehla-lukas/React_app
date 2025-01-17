@@ -14,18 +14,18 @@ declare module '@mui/material/Paper' {
 //   }
 // }
 
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    codeName: React.CSSProperties
-  }
-
-  interface TypographyVariantsOptions {
-    codeName?: React.CSSProperties
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    body1Bold: true
   }
 }
 
-declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
-    codeName: true
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    body1Bold: React.CSSProperties
+  }
+
+  interface TypographyVariantsOptions {
+    body1Bold?: React.CSSProperties
   }
 }

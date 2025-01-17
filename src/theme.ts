@@ -90,6 +90,11 @@ const theme = createTheme({
       fontWeight: 400,
       lineHeight: 1.5,
     },
+    body1Bold: {
+      fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+      fontWeight: 700, // `fontWeight: 700` pro bold
+      lineHeight: 1.5,
+    },
     body2: {
       fontSize: 'clamp(0.75rem, 0.9vw, 0.875rem)',
       fontWeight: 400,

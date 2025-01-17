@@ -1,4 +1,13 @@
-import { Box, IconButton, List, ListItem, Link as MuiLink, Paper, Typography } from '@mui/material'
+import {
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Link as MuiLink,
+  Paper,
+  Typography,
+} from '@mui/material'
 
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -11,17 +20,17 @@ const PCF8591 = () => {
   }
   const codeInitLibrary = `#include "I2C_PCF8591.h"
 
-        void setup() {
-             I2C_PCF8591_init(0, 0, 3.3);
-        }`
-  const codeRead = `uint8_t adcValue = I2C_PCF8591_read_raw_analog_ch(0);
-float voltage = I2C_PCF8591_read_analog_ch(0);`
+void setup() {
+    I2C_PCF8591_init(0, 0, 3.3);
+}`
+  const codeRead = `uint8_t *adcValue = I2C_PCF8591_read_raw_ch(0);
+float *voltage = I2C_PCF8591_read_ch(0);`
 
-  const codeWrite = `uint8_t *adcValue = 128;
-I2C_PCF8591_write_ain_raw(adcValue);
+  const codeWrite = `uint8_t adcValue = 128;
+I2C_PCF8591_write_raw(adcValue);
 
-float *setVoltage = 1.2;
-I2C_PCF8591_write_ain(setVoltage);`
+float setVoltage = 1.2;
+I2C_PCF8591_write(setVoltage);`
 
   const codeExample = `#include "main.h"
 #include "I2C_PCF8591.h"
@@ -33,12 +42,21 @@ int main(void) {
     SystemClock_Config();
     MX_GPIO_Init();
     MX_I2C1_Init();
+    HAL_StatusTypeDef i2cResult;
+    float *voltage = NULL;
 
-    PCF8591_Init(&hi2c1, 0x48);
-
+    i2cResult = I2C_PCF8591_init(0, 0, 3.3);
+    if (i2cResult == HAL_OK){
+        sprintf('init complete')
+    } 
     while (1) {
-        uint8_t adcValue = PCF8591_Read(0); // Čtení z kanálu 0
-        PCF8591_Write(adcValue); // Nastavení DAC na stejnou hodnotu
+        voltage = I2C_PCF8591_read_analog_ch(0);
+        if (voltage =! NULL){
+            i2cResult = I2C_PCF8591_write(*voltage);
+            if (i2cResult == HAL_OK){
+                sprintf('data written')
+            } 
+        } 
         HAL_Delay(100);
     }
 }`
@@ -84,28 +102,78 @@ int main(void) {
         </Typography>
         <Typography variant='h3'>Klíčové vlastnosti:</Typography>
         <List>
-          <ListItem>- Podpora I2C: Připojení k PCF8591 pomocí sběrnice I2C.</ListItem>
+          <ListItemText>- Podpora I2C: Připojení k PCF8591 pomocí sběrnice I2C.</ListItemText>
 
-          <ListItem>
+          <ListItemText>
             - Snadné API: Funkce pro inicializaci, čtení analogových hodnot a generování analogových
             výstupů.
-          </ListItem>
+          </ListItemText>
 
-          <ListItem>
+          <ListItemText>
             - Flexibilita: Možnost nastavení konfigurace kanálů a základních parametrů.
-          </ListItem>
-
-          <ListItem>- Výkonnost: Efektivní řízení přístupu k I2C zařízením.</ListItem>
+          </ListItemText>
+          <Box
+            sx={{
+              paddingTop: '16px',
+            }}
+          >
+            <Typography variant='h2'>Popis chipu PCF8591</Typography>
+            <Typography>
+              PCF8591 je integrovaný obvod od společnosti NXP (dříve Philips), který kombinuje
+              4kanálový 8bitový ADC (analogově-digitální převodník) a 1kanálový 8bitový DAC
+              (digitálně-analogový převodník). Tento obvod komunikuje přes sběrnici I2C, což
+              umožňuje snadné připojení k mikroprocesorům nebo mikrokontrolérům. Vlastnosti:
+            </Typography>
+            <Typography variant='body1'>
+              <List>
+                <ListItemText>
+                  <Typography variant='body1Bold'>ADC:</Typography>
+                  <List sx={{ paddingLeft: '16px' }}>
+                    <ListItemText>- 4 kanály pro analogové vstupy.</ListItemText>
+                    <ListItemText>- Rozlišení 8 bitů (hodnoty 0–255).</ListItemText>
+                    <ListItemText>
+                      - Možnost konfigurace vstupních režimů:
+                      <List sx={{ paddingLeft: '16px' }}>
+                        <ListItemText>- Jednotlivé kanály (single-ended).</ListItemText>
+                        <ListItemText>- Diferenciální vstupy.</ListItemText>
+                        <ListItemText>- Kombinovaný režim.</ListItemText>
+                      </List>
+                    </ListItemText>
+                  </List>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant='body1Bold'>DAC:</Typography>
+                  <List sx={{ paddingLeft: '16px' }}>
+                    <ListItemText>- Jednokanálový digitálně-analogový převodník.</ListItemText>
+                    <ListItemText>- Rozlišení 8 bitů.</ListItemText>
+                  </List>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant='body1Bold'>Komunikace:</Typography> - Rozhraní I2C s možností
+                  adresace až 8 zařízení ma jedné sběrnici.
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant='body1Bold'>Napájení:</Typography>
+                  <List sx={{ paddingLeft: '16px' }}>
+                    <ListItemText>- Provozní napětí: 2,5–6 V.</ListItemText>
+                    <ListItemText>
+                      - Typické referenční napětí: 3,3 V nebo 5 V (závisí na aplikaci).
+                    </ListItemText>
+                  </List>
+                </ListItemText>
+              </List>
+            </Typography>
+          </Box>
         </List>
       </Paper>
       <Paper>
         <Typography variant='h2'>Použití knihovny</Typography>
         <List>
           <Paper>
-            <ListItem>
+            <ListItemText>
               1. Inicializace: Nejprve je třeba zavolat funkci PCF8591_Init, která inicializuje
               komunikaci přes I2C.
-            </ListItem>
+            </ListItemText>
             <SyntaxHighlighter
               language='c'
               style={darcula}
@@ -115,21 +183,23 @@ int main(void) {
               {codeInitLibrary}
             </SyntaxHighlighter>
             <List>
-              <ListItem>
+              <ListItemText>
                 - enableAnalogOutput: Nastavte na 1 pro povolení výstupu DAC, 0 pro deaktivaci.
-              </ListItem>
-              <ListItem>
+              </ListItemText>
+              <ListItemText>
                 - inputMode: Konfigurace vstupního režimu (např. jednostranný nebo diferenciální).
-              </ListItem>
-              <ListItem>
+              </ListItemText>
+              <ListItemText>
                 - referenceVoltage: Referenční napětí pro převody ADC. Při úspěchu vrací: HAL_OK,
                 jinak chybový stav.
-              </ListItem>
+              </ListItemText>
             </List>
           </Paper>
           <Paper>
-            <ListItem>2. Čtení hodnot ADC z konkrétního kanálu lze použít funkci.</ListItem>
-            <ListItem>Pozor funkce vrací ukazatele na adresu kde je hodnota uložená!</ListItem>
+            <ListItemText>2. Čtení hodnot ADC z konkrétního kanálu lze použít funkci.</ListItemText>
+            <ListItemText>
+              Pozor funkce vrací ukazatele na adresu kde je hodnota uložená!
+            </ListItemText>
             <SyntaxHighlighter
               language='c'
               style={darcula}
@@ -140,9 +210,9 @@ int main(void) {
             </SyntaxHighlighter>
           </Paper>
           <Paper>
-            <ListItem>
+            <ListItemText>
               3. Nastavení DAC pro vygenerování analogové hodnoty pomocí DAC lze použít funkci.
-            </ListItem>
+            </ListItemText>
             <SyntaxHighlighter
               language='c'
               style={darcula}
@@ -155,7 +225,7 @@ int main(void) {
         </List>
       </Paper>
       <Paper>
-        <Typography variant='h1'>Příklad implementace</Typography>
+        <Typography variant='h2'>Příklad implementace</Typography>
         <SyntaxHighlighter
           language='c'
           style={darcula}
