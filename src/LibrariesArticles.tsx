@@ -17,9 +17,10 @@ const PCF8591 = () => {
   const codeRead = `uint8_t adcValue = I2C_PCF8591_read_raw_analog_ch(0);
 float voltage = I2C_PCF8591_read_analog_ch(0);`
 
-  const codeWrite = `uint8_t adcValue = 128;
+  const codeWrite = `uint8_t *adcValue = 128;
 I2C_PCF8591_write_ain_raw(adcValue);
-float setVoltage = 1.2;
+
+float *setVoltage = 1.2;
 I2C_PCF8591_write_ain(setVoltage);`
 
   const codeExample = `#include "main.h"
@@ -128,6 +129,7 @@ int main(void) {
           </Paper>
           <Paper>
             <ListItem>2. Čtení hodnot ADC z konkrétního kanálu lze použít funkci.</ListItem>
+            <ListItem>Pozor funkce vrací ukazatele na adresu kde je hodnota uložená!</ListItem>
             <SyntaxHighlighter
               language='c'
               style={darcula}
