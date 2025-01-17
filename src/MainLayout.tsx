@@ -55,9 +55,16 @@ const MainLayout = () => {
       >
         <Typography variant='h3'>Projects:</Typography>
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
-        <Tab value='C-Memory' label='C-Memory' component={Link} to='/CodeSnippetMemoryAllocate' />
         <Typography variant='h3'>Code snippet:</Typography>
         <Tab value='Encoder' label='Encoder' component={Link} to='/Encoder' />
+        <Tab
+          value='malloc - calloc'
+          label='malloc - calloc'
+          component={Link}
+          to='/CodeSnippetMemoryAllocate'
+        />
+        <Typography variant='h3'>Libraries:</Typography>
+        <Tab value='TBD' label='TBD' component={Link} to='/' />
       </Tabs>
     ),
     print: (
