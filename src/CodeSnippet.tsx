@@ -1,6 +1,7 @@
 import { Box, Paper, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 
-import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -133,4 +134,23 @@ const CodeSnippetMemoryAllocate = () => {
   )
 }
 
-export default CodeSnippetMemoryAllocate
+const CodeSnippetCubeIdeCheatSheet = () => {
+  const [markdown, setMarkdown] = useState<string>('')
+
+  useEffect(() => {
+    fetch('/React_app/codeSnippet/cubeIdeCheatSheet.md')
+      .then(response => response.text())
+      .then(text => setMarkdown(text))
+      .catch(error => console.error('Failed to load Markdown:', error))
+  }, [])
+  return (
+    <Box>
+      <Paper>
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </Paper>
+      <Typography variant='overline'>Tento obsah je exportov8n z .md</Typography>
+    </Box>
+  )
+}
+
+export { CodeSnippetCubeIdeCheatSheet, CodeSnippetMemoryAllocate }

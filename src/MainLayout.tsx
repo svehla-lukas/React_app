@@ -53,17 +53,29 @@ const MainLayout = () => {
           isMobile && setIsDrawerOpen(false)
         }}
       >
-        <Typography variant='h3'>Projects:</Typography>
+        <Typography variant='h2' sx={{ color: 'primary.primary' }}>
+          Projects:
+        </Typography>
         <Tab value='CureStation' label='Cure station' component={Link} to='/CureStation' />
-        <Typography variant='h3'>Code snippet:</Typography>
+        <Typography variant='h2' sx={{ color: 'primary.primary' }}>
+          Code snippet:
+        </Typography>
         <Tab value='Encoder' label='Encoder' component={Link} to='/Encoder' />
+        <Tab
+          value='CubeIde-CheatSheet'
+          label='CubeIde-CheatSheet'
+          component={Link}
+          to='/CodeSnippetCubeIdeCheatSheet'
+        />
         <Tab
           value='malloc - calloc'
           label='malloc - calloc'
           component={Link}
           to='/CodeSnippetMemoryAllocate'
         />
-        <Typography variant='h3'>Libraries:</Typography>
+        <Typography variant='h2' sx={{ color: 'primary.primary' }}>
+          Libraries:
+        </Typography>
         <Tab value='PCF8591' label='PCF8591' component={Link} to='/PCF8591' />
       </Tabs>
     ),
