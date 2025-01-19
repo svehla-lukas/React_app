@@ -1,84 +1,97 @@
-# Význam zkratek a popis obsahu sekcí
+# .h - Význam zkratek
 
-### `/* USER CODE BEGIN Header */`
-**Header** – Komentáře k souboru, informace o projektu nebo autorovi.
+### Includes
+- **Popis:** Zahrnutí hlavičkových souborů.
+- **Použití:** Pro `#include` hlavičkových souborů.
 
----
+### ET (Enumerated Types)
+- **Popis:** Výčtové typy.
+- **Použití:** Definice vlastních `enum`.
 
-### `/* USER CODE BEGIN Includes */`
-**Includes** – Vkládání uživatelských hlavičkových souborů (`#include`).
+### EC (External Constants)
+- **Popis:** Externí konstanty.
+- **Použití:** Deklarace `extern const` hodnot pro použití mezi moduly.
 
----
+### EM (External Macros)
+- **Popis:** Externí makra.
+- **Použití:** Definice sdílených maker.
 
-### `/* USER CODE BEGIN PTD */`
-**PTD (Private Typedefs)** – Definice privátních typů, například `typedef`.
+### EFP (External Function Prototypes)
+- **Popis:** Externí prototypy funkcí.
+- **Použití:** Deklarace funkcí, které budou volány z jiných `.c` souborů.
 
----
-
-### `/* USER CODE BEGIN PD */`
-**PD (Private Defines)** – Definice privátních konstant a maker (`#define`).
-
----
-
-### `/* USER CODE BEGIN PM */`
-**PM (Private Macros)** – Uživatelské makra.
-
----
-
-### `/* USER CODE BEGIN PV */`
-**PV (Private Variables)** – Deklarace uživatelských globálních proměnných.
+### Private Defines
+- **Popis:** Soukromé definice.
+- **Použití:** Definice `#define` hodnot, které se používají pouze v aktuálním souboru.
 
 ---
 
-### `/* USER CODE BEGIN PFP */`
-**PFP (Private Function Prototypes)** – Deklarace uživatelských funkcí (function prototypes).
+# .c - Význam zkratek
 
----
+### Header
+- **Popis:** Komentáře k souboru, informace o projektu nebo autorovi.
+- **Použití:** Přidání metadat k souboru.
 
-### `/* USER CODE BEGIN 0 */`
-**0** – Libovolný uživatelský kód na začátku souboru, například inicializace vlastních knihoven.
+### Includes
+- **Popis:** Vkládání uživatelských hlavičkových souborů (`#include`).
+- **Použití:** Import funkcionalit z jiných modulů.
 
----
+### PTD (Private Typedefs)
+- **Popis:** Definice privátních typů, například `typedef`.
+- **Použití:** Interní datové struktury nebo aliasy.
 
-### `/* USER CODE BEGIN 1 */`
-**1** – Uživatelský kód pro další inicializace a přípravu.
+### PD (Private Defines)
+- **Popis:** Definice privátních konstant a maker (`#define`).
+- **Použití:** Konfigurace konstant a interní definice.
 
----
+### PM (Private Macros)
+- **Popis:** Uživatelské makra.
+- **Použití:** Definice jednoduchých opakovatelných operací.
 
-### `/* USER CODE BEGIN Init */`
-**Init** – Uživatelské inicializační kódy (proměnné, periferie).
+### PV (Private Variables)
+- **Popis:** Deklarace uživatelských globálních proměnných.
+- **Použití:** Proměnné viditelné pouze v aktuálním souboru.
 
----
+### PFP (Private Function Prototypes)
+- **Popis:** Deklarace uživatelských funkcí (function prototypes).
+- **Použití:** Připravení funkcí pro použití v souboru.
 
-### `/* USER CODE BEGIN SysInit */`
-**SysInit** – Uživatelské úpravy systémové inicializace, např. hodiny, priority přerušení.
+### User begin 0
+- **Popis:** Libovolný uživatelský kód na začátku souboru.
+- **Použití:** Například inicializace vlastních knihoven nebo proměnných.
 
----
+### User begin 1
+- **Popis:** Uživatelský kód pro další inicializace a přípravu.
+- **Použití:** Například nastavení hodnot před inicializací periferie.
 
-### `/* USER CODE BEGIN 2 */`
-**2** – Uživatelský kód po inicializaci hardwaru, ale před hlavní smyčkou.
+### Init
+- **Popis:** Uživatelské inicializační kódy (proměnné, periferie).
+- **Použití:** Například přizpůsobení inicializace hardwaru.
 
----
+### SysInit
+- **Popis:** Uživatelské úpravy systémové inicializace, např. hodiny, priority přerušení.
+- **Použití:** Změna systémových parametrů.
 
-### `/* USER CODE BEGIN WHILE */`
-**WHILE** – Kód uvnitř hlavní smyčky (`while(1)`), například logika programu.
+### User begin 2
+- **Popis:** Uživatelský kód po inicializaci hardwaru, ale před hlavní smyčkou.
+- **Použití:** Nastavení logiky nebo dalších parametrů.
 
----
+### WHILE
+- **Popis:** Kód uvnitř hlavní smyčky (`while(1)`).
+- **Použití:** Hlavní logika programu.
 
-### `/* USER CODE BEGIN 3 */`
-**3** – Kód, který se vykonává uvnitř nebo na konci hlavní smyčky.
+### User begin 3
+- **Popis:** Kód, který se vykonává uvnitř nebo na konci hlavní smyčky.
+- **Použití:** Zajištění plynulého běhu smyčky.
 
----
+### User begin 4
+- **Popis:** Uživatelské funkce mimo hlavní smyčku nebo inicializaci.
+- **Použití:** Podpůrné funkce nebo obsluha přerušení.
 
-### `/* USER CODE BEGIN 4 */`
-**4** – Uživatelské funkce mimo hlavní smyčku nebo inicializaci.
+### Error_Handler_Debug
+- **Popis:** Ladicí kód pro funkci `Error_Handler`.
+- **Použití:** Debugování chyb při běhu programu.
 
----
-
-### `/* USER CODE BEGIN Error_Handler_Debug */`
-**Error_Handler_Debug** – Ladicí kód pro funkci `Error_Handler`.
-
----
-
-### `/* USER CODE BEGIN 6 */`
-**6** – Uživatelské funkce nebo přerušení, které nemají výchozí sekci.
+### User begin 6
+- **Popis:** Uživatelské funkce nebo přerušení, které nemají výchozí sekci.
+- **Použití:** Dodatečné funkce nebo ladění programu.

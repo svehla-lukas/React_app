@@ -148,7 +148,7 @@ const CodeSnippetCubeIdeCheatSheet = () => {
       <Paper>
         <ReactMarkdown>{markdown}</ReactMarkdown>
       </Paper>
-      <Typography variant='overline'>Tento obsah je exportov8n z .md</Typography>
+      <Typography variant='overline'>This content is exported from a .md file.</Typography>
     </Box>
   )
 }
