@@ -78,7 +78,7 @@ int main(void) {
           target='_blank'
           rel='noopener noreferrer'
         >
-          <Typography variant='body1'>GitHub: github.com/svehla-lukas/Cure_Station</Typography>
+          <Typography variant='body1'>GitHub: github.com/svehla-lukas/PCF8591_stm32</Typography>
         </MuiLink>
       </Box>
       <Box
