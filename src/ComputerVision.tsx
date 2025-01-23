@@ -100,7 +100,7 @@ const ShapeDetect = () => {
       </Paper>
 
       <YouTubePreview />
-      <Typography variant='overline'>Written on 22.1.2025.</Typography>
+      <Typography variant='overline'>Written on 21.1.2025.</Typography>
     </Box>
   )
 }
@@ -213,7 +213,7 @@ const TextDetect = () => {
         <Typography variant='overline'>This content is exported from a .md file.</Typography>
       </Paper>
       <YouTubePreview />
-      <Typography variant='overline'>Written on 23.1.2025.</Typography>
+      <Typography variant='overline'>Written on 22.1.2025.</Typography>
     </Box>
   )
 }

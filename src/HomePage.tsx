@@ -147,15 +147,20 @@ const HomePage = () => {
         {/* <Typography variant='h4' gutterBottom>
           About me
         </Typography> */}
-        <Typography variant='body1' gutterBottom>
+        <Typography variant='h3' gutterBottom>
           My name is Lukas Svehla, and I enjoy programming and working with electronic and
           mechanical devices. I love fixing things to learn how they work and using that knowledge
           to create something new.
         </Typography>
-        <Typography>
+        <Typography variant='h3' gutterBottom>
+          This page was created in 2023 when I began learning JavaScript and React. Initially, it
+          was just a learning project, but over time, it evolved into a personal blog where I
+          showcase my projects, keep a backup of my work, and organize my notes.
+        </Typography>
+        {/* <Typography>
           This website showcases some of the skills I have developed over time, offering a glimpse
           into my projects and ideas that I am excited to share with others.
-        </Typography>
+        </Typography> */}
         <Typography variant='body1' sx={{ marginBottom: 2 }}></Typography>
 
         <Button
