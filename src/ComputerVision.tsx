@@ -93,12 +93,22 @@ const ShapeDetect = () => {
           </Typography>
         </MuiLink>
       </Box>
+
       <ShapeDetectGif />
       <Paper>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
         <Typography variant='overline'>This content is exported from a .md file.</Typography>
       </Paper>
-
+      <Box
+        component='img'
+        src='python/shapeDetectPictureProcessed.png'
+        alt='img encoder CCW'
+        sx={{
+          width: { md: '100%', xs: '80%' },
+          height: 'auto',
+          borderRadius: '8px',
+        }}
+      />
       <YouTubePreview />
       <Typography variant='overline'>Written on 21.1.2025.</Typography>
     </Box>

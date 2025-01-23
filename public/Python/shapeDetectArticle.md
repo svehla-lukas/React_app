@@ -9,7 +9,7 @@ Tato ukázka demonstruje, jak využít knihovnu OpenCV k detekci a rozpoznání 
 Skript obsahuje logiku pro:
 
 1. **Zachycení Video Streamu**: Pomocí funkce `cv2.VideoCapture` je inicializováno snímání obrazu z připojené kamery.
-2. **Předzpracování Snímků**:
+2. **Předzpracování Snímků**: (Tento postup zachycuje obrázek níže.)
    - **Převod každého snímku na odstíny šedi (`cv2.cvtColor`)**:
      Snímky z kamery jsou zachyceny ve formátu BGR (modrá-zelená-červená). Pro zjednodušení dalšího zpracování a zvýšení rychlosti výpočtů jsou převedeny na odstíny šedi. Tento krok eliminuje barevnou informaci a zachovává pouze jas jednotlivých pixelů, což je často dostatečné pro úlohy, jako je detekce hran.
    - **Aplikace Gaussova rozmazání pro redukci šumu (`cv2.GaussianBlur`)**:
@@ -26,11 +26,6 @@ Skript obsahuje logiku pro:
    - Zobrazení detekovaných tvarů na původním snímku (`cv2.drawContours` a `cv2.putText`).
    - Vykreslení počtu detekovaných tvarů přímo na obrazovku.
 
-<img
-  src={`${process.env.PUBLIC_URL}/python/shapeDetectPictureProcessed.png`}
-  alt="Processed Image"
-  style="max-width: 70%; height: auto; display: block; margin: 1rem auto;"
-/>
 
 ---
 
