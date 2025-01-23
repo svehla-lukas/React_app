@@ -6,7 +6,7 @@ import { routes } from './RoutesConfig'
 import theme from './theme'
 
 const App = () => {
-  const routing = useRoutes(routes) // Vygeneruje Route komponenty podle konfigurace
+  const routing = useRoutes(routes)
   return routing
 }
 

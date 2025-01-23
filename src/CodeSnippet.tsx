@@ -143,6 +143,7 @@ const CodeSnippetCubeIdeCheatSheet = () => {
       .then(text => setMarkdown(text))
       .catch(error => console.error('Failed to load Markdown:', error))
   }, [])
+
   return (
     <Box>
       <Paper>

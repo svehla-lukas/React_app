@@ -79,6 +79,22 @@ const MainLayout = () => {
         <Tab value='PCF8591' label='PCF8591' component={Link} to='/PCF8591' />
       </Tabs>
     ),
+    python: (
+      <Tabs
+        orientation='vertical'
+        value={activeSideItem}
+        onChange={(event, newValue) => {
+          setActiveSideItem(newValue)
+          isMobile && setIsDrawerOpen(false)
+        }}
+      >
+        <Typography variant='h2' sx={{ color: 'primary.primary' }}>
+          Computer vision:
+        </Typography>
+        <Tab value='shapeDetect' label='Shape detect' component={Link} to='/ShapeDetect' />
+        <Tab value='textDetect' label='Text detect' component={Link} to='/TextDetect' />
+      </Tabs>
+    ),
     print: (
       <Tabs
         orientation='vertical'
@@ -104,6 +120,7 @@ const MainLayout = () => {
         sx={{
           zIndex: theme => theme.zIndex.drawer + 1,
           width: '96%',
+          backgroundColor: 'primary.main',
         }}
       >
         <Toolbar
@@ -150,6 +167,7 @@ const MainLayout = () => {
             >
               <Tab value='react' label='React' />
               <Tab value='embedded' label='Embedded' />
+              <Tab value='python' label='Python' />
               <Tab value='print' label='3D' />
             </Tabs>
           </Box>
@@ -230,7 +248,8 @@ const MainLayout = () => {
           marginTop: '100px',
           overflowY: 'auto',
           width: !isMobile ? 'calc(100% - 20%)' : '100%',
-          marginLeft: !isMobile ? '20%' : '0%',
+          maxWidth: '1000px',
+          margin: !isMobile ? '10% 0% 2% 20%' : '10% 0% 2% 0%',
         }}
       >
         <Outlet />

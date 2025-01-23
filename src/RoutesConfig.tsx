@@ -1,4 +1,5 @@
 import { CodeSnippetCubeIdeCheatSheet, CodeSnippetMemoryAllocate } from './CodeSnippet'
+import { ShapeDetect, TextDetect } from './ComputerVision'
 
 import Clock from './clock'
 import CureStation from './CureStation'
@@ -30,6 +31,12 @@ const react = [
   { path: 'MortgageCalculator', element: <MortgageCalculator /> },
   { path: 'Regulators', element: <Regulators /> },
 ]
+
+const python = [
+  { path: 'ShapeDetect', element: <ShapeDetect /> },
+  { path: 'TextDetect', element: <TextDetect /> },
+]
+
 const embedded = [
   { path: 'CureStation', element: <CureStation /> },
   { path: 'Encoder', element: <Encoder /> },
@@ -43,6 +50,13 @@ export const routes: RouteObject[] = [
   {
     path: '/',
     element: <MainLayout />,
-    children: [{ index: true, element: <HomePage /> }, ...main, ...react, ...embedded, ...print3d],
+    children: [
+      { index: true, element: <HomePage /> },
+      ...main,
+      ...react,
+      ...embedded,
+      ...python,
+      ...print3d,
+    ],
   },
 ]

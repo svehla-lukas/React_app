@@ -49,6 +49,9 @@ const theme = createTheme({
       fontSize: 'clamp(1.5rem, 2vw, 2rem)',
       fontWeight: 700,
       lineHeight: 1.2,
+      color: 'primary.main',
+      textAlign: 'center',
+      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
     },
     h2: {
       fontSize: 'clamp(1.125rem, 1.5vw, 1.5rem)',
@@ -92,7 +95,7 @@ const theme = createTheme({
     },
     body1Bold: {
       fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-      fontWeight: 700, // `fontWeight: 700` pro bold
+      fontWeight: 700,
       lineHeight: 1.5,
     },
     body2: {
@@ -264,6 +267,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: ({ theme }) => ({
+          backgroundColor: theme.palette.grey[100],
           padding: theme.spacing(2),
           margin: theme.spacing(2),
           borderRadius: theme.shape.borderRadius,
@@ -298,7 +302,7 @@ const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          // padding: 0,
+          // padding: '0px',
         },
       },
     },
