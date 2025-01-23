@@ -23,7 +23,7 @@ const ShapeDetect = () => {
   const [markdown, setMarkdown] = useState<string>('')
 
   useComponentDidMount(() => {
-    fetch(`${process.env.PUBLIC_URL}/python/shapeDetectArticle.md?v=123`)
+    fetch('python/shapeDetectArticle.md')
       .then(response => response.text())
       .then(text => setMarkdown(text))
       .catch(error => console.error('Failed to load Markdown:', error))
@@ -57,7 +57,7 @@ const ShapeDetect = () => {
     return (
       <Box
         component='img'
-        src={`${process.env.PUBLIC_URL}/python/shapeDetect.gif`}
+        src={'python/shapeDetect.gif'}
         alt='My Animation'
         sx={{
           width: '100%',
