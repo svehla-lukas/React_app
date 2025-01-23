@@ -23,7 +23,7 @@ const ShapeDetect = () => {
   const [markdown, setMarkdown] = useState<string>('')
 
   useComponentDidMount(() => {
-    fetch(`${process.env.PUBLIC_URL}/python/shapeDetectArticle.md`)
+    fetch(`${process.env.PUBLIC_URL}/python/shapeDetectArticle.md?v=123`)
       .then(response => response.text())
       .then(text => setMarkdown(text))
       .catch(error => console.error('Failed to load Markdown:', error))
@@ -110,7 +110,7 @@ const TextDetect = () => {
   const [markdown, setMarkdown] = useState<string>('')
 
   useComponentDidMount(() => {
-    fetch(`${process.env.PUBLIC_URL}/python/textDetectArticle.md`)
+    fetch(`${process.env.PUBLIC_URL}/python/textDetectArticle.md?v=123`)
       .then(response => response.text())
       .then(text => setMarkdown(text))
       .catch(error => console.error('Failed to load Markdown:', error))
