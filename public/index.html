@@ -6,15 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
+      name="Svehla"
       content="This website was created to showcase my skills and expertise."
     />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Svehla Lukas - Portfolio" />
+    <meta
+      property="og:description"
+      content="This website showcases my projects, skills, and expertise in various technologies."
+    />
+    <meta
+      property="og:image"
+      content="%PUBLIC_URL%/preview-image.png"
+    />
+    <meta property="og:url" content="https://svehla-lukas.github.io/React_app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Svehla Lukas - Portfolio" />
+    <meta
+      name="twitter:description"
+      content="This website showcases my projects, skills, and expertise in various technologies."
+    />
+    <meta
+      name="twitter:image"
+      content="%PUBLIC_URL%/preview-image.png"
+    />
+
+    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!-- Dynamic Cache Buster -->
     <script>
-      // Generate a unique version string based on the current timestamp
       const version = `v=${new Date().getTime()}`;
       const publicUrl = "%PUBLIC_URL%";
 
@@ -37,7 +63,6 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script>
-      // Add JS files dynamically with timestamp
       const script = document.createElement("script");
       script.src = `${publicUrl}/static/js/main.js?${version}`;
       document.body.appendChild(script);
