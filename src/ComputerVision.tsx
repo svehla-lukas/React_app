@@ -95,8 +95,7 @@ const ShapeDetect = () => {
       </Box>
       <ShapeDetectGif />
       <Paper>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-        {/* <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown> */}
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
         <Typography variant='overline'>This content is exported from a .md file.</Typography>
       </Paper>
 
