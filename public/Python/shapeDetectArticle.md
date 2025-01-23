@@ -27,7 +27,7 @@ Skript obsahuje logiku pro:
    - Vykreslení počtu detekovaných tvarů přímo na obrazovku.
 
 <img
-  src="python/shapeDetectPictureProcessed.png"
+  src={`${process.env.PUBLIC_URL}/python/shapeDetectPictureProcessed.png`}
   alt="Processed Image"
   style="max-width: 70%; height: auto; display: block; margin: 1rem auto;"
 />
