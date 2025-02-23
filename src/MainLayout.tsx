@@ -42,6 +42,12 @@ const MainLayout = () => {
           to='/MortgageCalculator'
         />
         <Tab value='Regulators' label='PID regulator' component={Link} to='/Regulators' />
+        <Tab
+          value='RegistrationPage'
+          label='Registration page BackEnd'
+          component={Link}
+          to='/RegistrationPage'
+        />
       </Tabs>
     ),
     embedded: (

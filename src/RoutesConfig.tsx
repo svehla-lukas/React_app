@@ -13,6 +13,7 @@ import Models3D from './Models3D'
 import MortgageCalculator from './MortgageCalculator'
 import PCF8591 from './LibrariesArticles'
 import React from 'react'
+import RegistrationPage from './RegistrationPage'
 import Regulators from './Regulators'
 import { RouteObject } from 'react-router-dom'
 import TicTacToe from './gameTTT'
@@ -30,6 +31,7 @@ const react = [
   { path: 'MapsCZ', element: <MapsCZ /> },
   { path: 'MortgageCalculator', element: <MortgageCalculator /> },
   { path: 'Regulators', element: <Regulators /> },
+  { path: 'RegistrationPage', element: <RegistrationPage /> },
 ]
 
 const python = [
