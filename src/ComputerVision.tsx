@@ -84,13 +84,11 @@ const ShapeDetect = () => {
         </IconButton>
         <MuiLink
           variant='body1'
-          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera'
+          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/main/RT_shape_detection'
           target='_blank'
           rel='noopener noreferrer'
         >
-          <Typography variant='body1'>
-            GitHub: github.com/svehla-lukas/SmartCam_OpenCVcamera
-          </Typography>
+          <Typography variant='body1'>GitHub: SmartCam_OpenCVcamera/RT_shape_detection</Typography>
         </MuiLink>
       </Box>
 
@@ -190,13 +188,11 @@ const TextDetect = () => {
         </IconButton>
         <MuiLink
           variant='body1'
-          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/textDetection'
+          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/main/RT_text_detection'
           target='_blank'
           rel='noopener noreferrer'
         >
-          <Typography variant='body1'>
-            GitHub: github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/textDetection
-          </Typography>
+          <Typography variant='body1'>GitHub: SmartCam_OpenCVcamera/RT_text_detection</Typography>
         </MuiLink>
       </Box>
       <ShapeDetectGif />
@@ -228,4 +224,75 @@ const TextDetect = () => {
   )
 }
 
-export { ShapeDetect, TextDetect }
+const RectangleDimension = () => {
+  const [markdown, setMarkdown] = useState<string>('')
+
+  useComponentDidMount(() => {
+    fetch(`${process.env.PUBLIC_URL}/python/measureDimensionArticle.md?v=123`)
+      .then(response => response.text())
+      .then(text => setMarkdown(text))
+      .catch(error => console.error('Failed to load Markdown:', error))
+  })
+
+  return (
+    <Box>
+      <Typography variant='h1'>Detekce textu na objektu v reálném čase: </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
+        <IconButton
+          onClick={() => window.open('https://github.com/svehla-lukas', '_blank')}
+          sx={{
+            display: 'flex',
+            color: 'black',
+          }}
+        >
+          <GitHubIcon />
+        </IconButton>
+        <MuiLink
+          variant='body1'
+          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/main/measure_package_dimension'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <Typography variant='body1'>
+            GitHub: SmartCam_OpenCVcamera/measure_package_dimension
+          </Typography>
+        </MuiLink>
+      </Box>
+      <Box
+        component='img'
+        src='python/measureDimension.png'
+        alt='img encoder CCW'
+        sx={{
+          width: { md: '100%', xs: '80%' },
+          height: 'auto',
+          borderRadius: '8px',
+        }}
+      />
+      <Paper>
+        <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            code({ node, inline, className, children, ...props }: any) {
+              const match = /language-(\w+)/.exec(className || '')
+              return !inline && match ? (
+                <SyntaxHighlighter style={darcula} language={match[1]} PreTag='div' {...props}>
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            },
+          }}
+        >
+          {markdown}
+        </ReactMarkdown>
+        <Typography variant='overline'>This content is exported from a .md file.</Typography>
+      </Paper>
+      <Typography variant='overline'>Written on 21.3.2025.</Typography>
+    </Box>
+  )
+}
+
+export { ShapeDetect, TextDetect, RectangleDimension }

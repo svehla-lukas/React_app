@@ -91,8 +91,14 @@ const MainLayout = () => {
         <Typography variant='h2' sx={{ color: 'primary.primary' }}>
           Computer vision:
         </Typography>
-        <Tab value='shapeDetect' label='Shape detect' component={Link} to='/ShapeDetect' />
-        <Tab value='textDetect' label='Text detect' component={Link} to='/TextDetect' />
+        <Tab value='shapeDetect' label='Shape detect - RT' component={Link} to='/ShapeDetect' />
+        <Tab value='textDetect' label='Text detect - RT' component={Link} to='/TextDetect' />
+        <Tab
+          value='rectangleDimension'
+          label='rectangle dimension'
+          component={Link}
+          to='/RectangleDimension'
+        />
       </Tabs>
     ),
     print: (
