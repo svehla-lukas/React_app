@@ -1,0 +1,38 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "editor.formatOnSave": true, // Enables format on save globally
+  "[javascript]": {
+    "editor.formatOnSave": true // Enable formatting for JS
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true // Enable formatting for React JS
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true // Enable formatting for TS
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true // Enable formatting for React TS
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "cSpell.words": [
+    "lukas",
+    "svehla"
+  ],
+  "files.eol": "\r\n",
+  "editor.formatOnSave": true
+}
