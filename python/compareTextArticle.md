@@ -1,4 +1,4 @@
-# ReadPackageInformation: Smart Label Extraction and Validation
+# Smart Label Extraction and Validation
 
 ## Overview
 **ReadPackageInformation** is a smart and modular image-processing pipeline built with **OpenCV**, **Tesseract OCR**, and **Excel/JSON-based metadata**. It is designed for industrial use cases, where extracting, aligning, and verifying printed information from packaging is critical. This system supports camera/live frame capture or still image analysis.
