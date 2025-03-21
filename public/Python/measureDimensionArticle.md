@@ -1,4 +1,4 @@
-# MeasureDimension: Automated Object Measurement with OpenCV
+# Automated Object Measurement with OpenCV
 
 ## Introduction
 **MeasureDimension** is a Python-based tool that utilizes **OpenCV** to detect, analyze, and measure objects in images or live camera feeds. The system identifies the largest contour in an image, extracts its dimensions, and converts the measurements from pixels to millimeters using predefined camera parameters.

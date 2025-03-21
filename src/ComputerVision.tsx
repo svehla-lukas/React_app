@@ -236,7 +236,7 @@ const RectangleDimension = () => {
 
   return (
     <Box>
-      <Typography variant='h1'>Detekce textu na objektu v reálném čase: </Typography>
+      <Typography variant='h1'>Measure rectanngle dimension: </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
         <IconButton
           onClick={() => window.open('https://github.com/svehla-lukas', '_blank')}
@@ -307,7 +307,7 @@ const ComparePackageText = () => {
 
   return (
     <Box>
-      <Typography variant='h1'>Detekce textu na objektu v reálném čase: </Typography>
+      <Typography variant='h1'>Read and compare text specific position: </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
         <IconButton
           onClick={() => window.open('https://github.com/svehla-lukas', '_blank')}
@@ -320,12 +320,12 @@ const ComparePackageText = () => {
         </IconButton>
         <MuiLink
           variant='body1'
-          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/main/measure_package_dimension'
+          href='https://github.com/svehla-lukas/SmartCam_OpenCVcamera/tree/main/read_package_information'
           target='_blank'
           rel='noopener noreferrer'
         >
           <Typography variant='body1'>
-            GitHub: SmartCam_OpenCVcamera/measure_package_dimension
+            GitHub: SmartCam_OpenCVcamera/read_package_information
           </Typography>
         </MuiLink>
       </Box>
