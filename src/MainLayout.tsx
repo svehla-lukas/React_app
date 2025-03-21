@@ -26,7 +26,7 @@ const MainLayout = () => {
     react: (
       <Tabs
         orientation='vertical'
-        value={activeSideItem}
+        value={activeSideItem || 'gameTTT'}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
           isMobile && setIsDrawerOpen(false)
@@ -48,12 +48,13 @@ const MainLayout = () => {
           component={Link}
           to='/RegistrationPage'
         />
+        <Tab value='LunchOrder' label='Lunch order system' component={Link} to='/LunchOrder' />
       </Tabs>
     ),
     embedded: (
       <Tabs
         orientation='vertical'
-        value={activeSideItem}
+        value={activeSideItem || 'CureStation'}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
           isMobile && setIsDrawerOpen(false)
@@ -88,7 +89,7 @@ const MainLayout = () => {
     python: (
       <Tabs
         orientation='vertical'
-        value={activeSideItem}
+        value={activeSideItem || 'shapeDetect'}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
           isMobile && setIsDrawerOpen(false)
@@ -104,7 +105,7 @@ const MainLayout = () => {
     print: (
       <Tabs
         orientation='vertical'
-        value={activeSideItem}
+        value={activeSideItem || 'Models3D'}
         onChange={(event, newValue) => {
           setActiveSideItem(newValue)
           isMobile && setIsDrawerOpen(false)

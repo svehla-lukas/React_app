@@ -6,6 +6,7 @@ import CureStation from './CureStation'
 import Encoder from './Encoder'
 import HackerType from './HackerType'
 import HomePage from './HomePage'
+import LunchOrder from './LunchOrder'
 import MainLayout from './MainLayout'
 import MapsCZ from './MapsCZ'
 import MemoryGame from './MemoryGame'
@@ -32,6 +33,7 @@ const react = [
   { path: 'MortgageCalculator', element: <MortgageCalculator /> },
   { path: 'Regulators', element: <Regulators /> },
   { path: 'RegistrationPage', element: <RegistrationPage /> },
+  { path: 'LunchOrder', element: <LunchOrder /> },
 ]
 
 const python = [

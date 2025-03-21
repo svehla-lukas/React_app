@@ -9,6 +9,8 @@ import {
   Typography,
 } from '@mui/material'
 
+import { EmojiPeopleOutlined } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const RegistrationPage = () => {
@@ -17,6 +19,8 @@ const RegistrationPage = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false)
   const [snackbarMessage, setSnackbarMessage] = useState('')
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success')
+
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     console.log('UserName:', userName)
@@ -31,13 +35,22 @@ const RegistrationPage = () => {
     const data = await response.json()
 
     if (response.ok) {
+      // ✅ Uložení uživatele do localStorage
+      localStorage.setItem('user', JSON.stringify(data.user))
+
       setSnackbarMessage('Login successful!')
       setSnackbarSeverity('success')
+      setOpenSnackbar(true)
+
+      // ✅ Přesměrování na hlavní stránku po loginu
+      setTimeout(() => {
+        navigate('/')
+      }, 1500)
     } else {
       setSnackbarMessage(data.error || 'Invalid credentials or server error.')
       setSnackbarSeverity('error')
+      setOpenSnackbar(true)
     }
-    setOpenSnackbar(true)
   }
 
   return (
@@ -55,7 +68,7 @@ const RegistrationPage = () => {
             margin='normal'
             value={userName}
             onChange={e => setUserName(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleLogin()} // ✅ Stisknutí Enter zavolá login
+            onKeyDown={e => e.key === 'Enter' && handleLogin()}
           />
 
           <TextField
@@ -66,7 +79,7 @@ const RegistrationPage = () => {
             margin='normal'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleLogin()} // ✅ Stisknutí Enter zavolá login
+            onKeyDown={e => e.key === 'Enter' && handleLogin()}
           />
 
           <Button
@@ -81,7 +94,6 @@ const RegistrationPage = () => {
         </CardContent>
       </Card>
 
-      {/* Snackbar - Vyskakovací okno s výsledkem přihlášení */}
       <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={() => setOpenSnackbar(false)}>
         <Alert
           onClose={() => setOpenSnackbar(false)}

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "luke",
+      "email": "lukas@example.com",
+      "passwordHash": "$2b$10$2uNeoj4lZEGphlxCt.6SCuFuuxlP9uDs2KvYacbnPPEiZluMNGa7G",
+      "firstName": "Lukas",
+      "lastName": "Svehla",
+      "createdAt": "2025-02-21T12:00:00Z",
+      "updatedAt": "2025-02-21T12:00:00Z",
+      "role": "user",
+      "isActive": true
+    }
+  ]
+}
