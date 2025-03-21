@@ -1,5 +1,5 @@
 import { CodeSnippetCubeIdeCheatSheet, CodeSnippetMemoryAllocate } from './CodeSnippet'
-import { ShapeDetect, TextDetect, RectangleDimension } from './ComputerVision'
+import { ShapeDetect, TextDetect, RectangleDimension, ComparePackageText } from './ComputerVision'
 
 import Clock from './clock'
 import CureStation from './CureStation'
@@ -36,6 +36,7 @@ const python = [
   { path: 'ShapeDetect', element: <ShapeDetect /> },
   { path: 'TextDetect', element: <TextDetect /> },
   { path: 'RectangleDimension', element: <RectangleDimension /> },
+  { path: 'ComparePackageText', element: <ComparePackageText /> },
 ]
 
 const embedded = [

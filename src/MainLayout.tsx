@@ -94,10 +94,16 @@ const MainLayout = () => {
         <Tab value='shapeDetect' label='Shape detect - RT' component={Link} to='/ShapeDetect' />
         <Tab value='textDetect' label='Text detect - RT' component={Link} to='/TextDetect' />
         <Tab
-          value='rectangleDimension'
-          label='rectangle dimension'
+          value='RectangleDimension'
+          label='Rectangle dimension'
           component={Link}
           to='/RectangleDimension'
+        />
+        <Tab
+          value='ComparePackageText'
+          label='Compare text'
+          component={Link}
+          to='/ComparePackageText'
         />
       </Tabs>
     ),
