@@ -65,10 +65,9 @@ const HomePage = () => {
             <HomeIcon />
           </IconButton>
           <MuiLink
-            variant='button'
-            // href='https:// noremaps.google.com/?q=Brno'
-            // target='_blank'
-            // rel='noopenerferrer'
+            href='https:// noremaps.google.com/?q=Brno'
+            target='_blank'
+            rel='noopenerferrer'
             sx={{ textDecoration: 'none', color: 'inherit' }}
           >
             <Typography>Brno - Czech Republic</Typography>
@@ -102,12 +101,7 @@ const HomePage = () => {
           >
             <GitHubIcon />
           </IconButton>
-          <MuiLink
-            variant='button'
-            href='https://github.com/svehla-lukas'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
+          <MuiLink href='https://github.com/svehla-lukas' target='_blank' rel='noopener noreferrer'>
             <Typography>GitHub: github.com/svehla-lukas</Typography>
           </MuiLink>
         </Box>
@@ -124,12 +118,11 @@ const HomePage = () => {
             <LinkedInIcon />
           </IconButton>
           <MuiLink
-            variant='button'
             href='https://www.linkedin.com/in/svehla-lukas/'
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Typography>linkedin.com/in/svehla-lukas</Typography>
+            <Typography>LinkedIn: linkedin.com/in/svehla-lukas</Typography>
           </MuiLink>
         </Box>
       </Box>
