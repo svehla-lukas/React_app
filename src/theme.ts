@@ -57,36 +57,43 @@ const theme = createTheme({
       fontSize: 'clamp(1.125rem, 1.5vw, 1.5rem)',
       fontWeight: 600,
       lineHeight: 1.3,
+      whiteSpace: 'normal',
     },
     h3: {
       fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
       fontWeight: 500,
       lineHeight: 1.4,
+      whiteSpace: 'normal',
     },
     h4: {
       fontSize: 'clamp(0.875rem, 1vw, 1.15rem)',
       fontWeight: 500,
       lineHeight: 1.5,
+      whiteSpace: 'normal',
     },
     h5: {
       fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.6,
+      whiteSpace: 'normal',
     },
     h6: {
       fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.6,
+      whiteSpace: 'normal',
     },
     subtitle1: {
       fontSize: 'clamp(0.875rem, 1vw, 1rem)',
       fontWeight: 400,
       lineHeight: 1.75,
+      whiteSpace: 'normal',
     },
     subtitle2: {
       fontSize: 'clamp(0.75rem, 0.9vw, 0.875rem)',
       fontWeight: 500,
       lineHeight: 1.57,
+      whiteSpace: 'normal',
     },
     body1: {
       fontSize: 'clamp(0.875rem, 1vw, 1rem)',
@@ -111,6 +118,7 @@ const theme = createTheme({
       fontSize: 'clamp(0.625rem, 0.8vw, 0.75rem)',
       fontWeight: 400,
       lineHeight: 1.66,
+      whiteSpace: 'normal',
     },
     overline: {
       fontSize: 'clamp(0.625rem, 0.8vw, 0.75rem)',

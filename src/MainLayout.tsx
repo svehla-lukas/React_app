@@ -33,8 +33,11 @@ const MainLayout = () => {
     setActiveHeaderButton(newValue)
     isMobile && setIsDrawerOpen(true)
   }
-
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen)
+  }
   const renderPanelContents = (panelName: string) => panelMappings[panelName] || null
+
   const panelMappings: Record<string, React.ReactNode> = {
     react: (
       <Tabs
@@ -132,10 +135,6 @@ const MainLayout = () => {
         <Tab value='Models3D' label='3D Models' component={Link} to='/Models3D' />
       </Tabs>
     ),
-  }
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen)
   }
 
   return (

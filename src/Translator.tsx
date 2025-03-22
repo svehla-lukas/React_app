@@ -1,5 +1,5 @@
-import { initReactI18next } from 'react-i18next'
 import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -29,7 +29,7 @@ i18n.use(initReactI18next).init({
       translation: {
         title: 'Hypoteční Kalkulačka',
         inputs: 'Vstupy',
-        Outputs: 'Výstupy',
+        outputs: 'Výstupy',
         loanAmount: 'Částka úvěru',
         interestRate: 'Úroková sazba',
         loanTerm: 'Doba splácení',
@@ -48,8 +48,8 @@ i18n.use(initReactI18next).init({
       },
     },
   },
-  lng: 'cz',
-  fallbackLng: 'en',
+  lng: 'en',
+  fallbackLng: 'cz',
   interpolation: {
     escapeValue: false,
   },

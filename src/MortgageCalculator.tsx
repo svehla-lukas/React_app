@@ -7,23 +7,13 @@ import {
   ChartOptions,
   Legend,
   LinearScale,
-  Title,
   Tooltip,
 } from 'chart.js'
-import {
-  BoldText,
-  Button,
-  Container,
-  Heading1,
-  Heading2,
-  Input,
-  InputContainer,
-  Text,
-} from './Styles'
-import { initReactI18next, useTranslation } from 'react-i18next'
+import { Button, Container, Heading1, Heading2, Input, InputContainer, Text } from './Styles'
 
 import { Bar } from 'react-chartjs-2'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend)
 
@@ -42,7 +32,6 @@ const MortgageCalculator = () => {
   const [interestRate, setInterestRate] = useState(5)
   const [loanTerm, setLoanTerm] = useState(10)
   const [inflationRate, setInflationRate] = useState(3)
-  const [repaymentType, setRepaymentType] = useState('')
   //  Calc output parameters
   const [totalPayment, setTotalPayment] = useState(0)
   const [totalInterest, setTotalInterest] = useState(0)
@@ -54,7 +43,7 @@ const MortgageCalculator = () => {
   }
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'cz' ? 'en' : 'cz')
+    i18n.changeLanguage(i18n.language === 'en' ? 'cz' : 'en')
   }
 
   const calculatePayment = () => {
@@ -158,7 +147,7 @@ const MortgageCalculator = () => {
         }}
       >
         <Button type='submit' onClick={toggleLanguage}>
-          {i18n.language === 'cz' ? t('switchLanguage') : t('switchLanguageCZ')}
+          {i18n.language === 'en' ? t('switchLanguageCZ') : t('switchLanguage')}
         </Button>
         <Button type='submit' onClick={handleChange}>
           {t('calculate')}
@@ -242,7 +231,7 @@ const MortgageCalculator = () => {
             </div>
           </Container>
           <Container flexDirection='column' style={{ padding: '20px', textAlign: 'left' }}>
-            <Heading2>{t('Outputs')}</Heading2>
+            <Heading2>{t('outputs')}</Heading2>
             <Container
               flexDirection='column'
               justifyContent='center'
