@@ -1,4 +1,17 @@
-import { AppBar, Box, Drawer, IconButton, Tab, Tabs, Toolbar, Typography } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  Drawer,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+} from '@mui/material'
 import React, { useState } from 'react'
 import { useMediaQuery, useTheme } from '@mui/material'
 
@@ -161,28 +174,42 @@ const MainLayout = () => {
               </IconButton>
             )}
 
-            <Link to='/'>
-              <img
-                src={`${process.env.PUBLIC_URL}/logo.png`}
-                alt='Navigate'
-                width='50px'
-                style={{ cursor: 'pointer' }}
-              />
-            </Link>
+            {!isMobile && (
+              <Link to='/'>
+                <img
+                  src={`${process.env.PUBLIC_URL}/logo.png`}
+                  alt='Navigate'
+                  width='50px'
+                  style={{ cursor: 'pointer' }}
+                />
+              </Link>
+            )}
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-            <Tabs
-              value={activeHeaderButton}
-              onChange={handleTabChange}
-              // centered
-            >
+          {isMobile ? (
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl size='small' sx={{ minWidth: 140 }}>
+                <Select
+                  labelId='menu-label'
+                  value={activeHeaderButton ?? ''}
+                  label='Sekce'
+                  onChange={e => handleTabChange(e as any, e.target.value)}
+                >
+                  <MenuItem value='react'>React</MenuItem>
+                  <MenuItem value='embedded'>Embedded</MenuItem>
+                  <MenuItem value='python'>Python</MenuItem>
+                  <MenuItem value='print'>3D</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          ) : (
+            <Tabs value={activeHeaderButton} onChange={handleTabChange}>
               <Tab value='react' label='React' />
               <Tab value='embedded' label='Embedded' />
               <Tab value='python' label='Python' />
               <Tab value='print' label='3D' />
             </Tabs>
-          </Box>
+          )}
 
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
@@ -253,6 +280,7 @@ const MainLayout = () => {
       {/* Main Content */}
       <Box
         sx={{
+          // backgroundColor: 'black',
           flexGrow: 1,
           flexDirection: 'column',
           display: 'flex',
@@ -261,7 +289,7 @@ const MainLayout = () => {
           overflowY: 'auto',
           width: !isMobile ? 'calc(100% - 20%)' : '100%',
           maxWidth: '1000px',
-          margin: !isMobile ? '10% 0% 2% 20%' : '10% 0% 2% 0%',
+          margin: !isMobile ? '13% 0% 0% 22%' : '30% 0% 0% 0%',
         }}
       >
         <Outlet />

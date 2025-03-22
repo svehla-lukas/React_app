@@ -121,6 +121,32 @@ const theme = createTheme({
   },
 
   components: {
+    MuiFormControl: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(1),
+          color: theme.palette.primary.contrastText,
+        }),
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: theme.shape.borderRadius,
+        }),
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: ({ theme }) => ({
+          color: theme.palette.primary.contrastText,
+        }),
+        notchedOutline: ({ theme }) => ({
+          borderColor: theme.palette.primary.main,
+        }),
+      },
+    },
+
     MuiTabs: {
       defaultProps: {
         variant: 'scrollable',
