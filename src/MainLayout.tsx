@@ -26,7 +26,7 @@ const MainLayout = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [activeHeaderButton, setActiveHeaderButton] = useState(null as string | null)
+  const [activeHeaderButton, setActiveHeaderButton] = useState('react')
   const [activeSideItem, setActiveSideItem] = useState(null as string | null)
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -190,7 +190,7 @@ const MainLayout = () => {
               <FormControl size='small' sx={{ minWidth: 140 }}>
                 <Select
                   labelId='menu-label'
-                  value={activeHeaderButton ?? ''}
+                  value={activeHeaderButton}
                   label='Sekce'
                   onChange={e => handleTabChange(e as any, e.target.value)}
                 >
