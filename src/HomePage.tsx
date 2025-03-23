@@ -5,6 +5,7 @@ import {
   Container,
   IconButton,
   Link as MuiLink,
+  Paper,
   Typography,
 } from '@mui/material'
 
@@ -17,7 +18,6 @@ const HomePage = () => {
   return (
     <Container
       sx={{
-        marginTop: 4,
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -31,9 +31,10 @@ const HomePage = () => {
           marginBottom: 4,
         }}
       >
+        <Box></Box>
         <Avatar
           src={`${process.env.PUBLIC_URL}/profile.jpg`} // Replace with your image path
-          alt='Your Name'
+          alt='avatar Lukas Svehla'
           sx={{
             width: 300,
             height: 300,
@@ -85,7 +86,7 @@ const HomePage = () => {
           >
             <EmailIcon />
           </IconButton>
-          <MuiLink variant='button' href='mailto:svehl.lukas@gmail.com' rel='noopener noreferrer'>
+          <MuiLink href='mailto:svehl.lukas@gmail.com' rel='noopener noreferrer'>
             <Typography>svehl.lukas@gmail.com</Typography>
           </MuiLink>
         </Box>
@@ -141,7 +142,7 @@ const HomePage = () => {
           About me
         </Typography> */}
         <Typography variant='h3' gutterBottom>
-          My name is Lukas Svehla, and I enjoy programming and working with electronic and
+          Hallo, my name is Lukas, and I enjoy programming and working with electronic and
           mechanical devices. I love fixing things to learn how they work and using that knowledge
           to create something new.
         </Typography>
@@ -150,10 +151,6 @@ const HomePage = () => {
           was just a learning project, but over time, it evolved into a personal blog where I
           showcase my projects, keep a backup of my work, and organize my notes.
         </Typography>
-        {/* <Typography>
-          This website showcases some of the skills I have developed over time, offering a glimpse
-          into my projects and ideas that I am excited to share with others.
-        </Typography> */}
         <Typography variant='body1' sx={{ marginBottom: 2 }}></Typography>
 
         <Button
@@ -167,6 +164,14 @@ const HomePage = () => {
         >
           <Typography variant='button'>Get PDF CV</Typography>
         </Button>
+      </Box>
+      <Box textAlign='center'>
+        <Paper>
+          <Typography variant='h1'>The best way to predict the future is to create it</Typography>
+          <Typography textAlign={'right'} variant='subtitle1' color='text.secondary'>
+            — Peter Drucker
+          </Typography>
+        </Paper>
       </Box>
     </Container>
   )
