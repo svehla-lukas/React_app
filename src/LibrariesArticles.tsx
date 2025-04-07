@@ -144,13 +144,11 @@ int main(void) {
           </ListItem>
         </List>
         <Typography variant='body1Bold'>Komunikace:</Typography>
-        <Typography variant='body1'>
-          <List>
-            <ListItem>
-              <ListItemText primary='Rozhraní I2C s možností adresace až 8 zařízení na jedné sběrnici.' />
-            </ListItem>
-          </List>
-        </Typography>
+        <List>
+          <ListItem>
+            <ListItemText primary='Rozhraní I2C s možností adresace až 8 zařízení na jedné sběrnici.' />
+          </ListItem>
+        </List>
         <Typography variant='body1Bold'>Napájení:</Typography>
         <List>
           <ListItem>
