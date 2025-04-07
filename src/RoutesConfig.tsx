@@ -17,6 +17,7 @@ import Regulators from './Regulators'
 import { RouteObject } from 'react-router-dom'
 import TicTacToe from './gameTTT'
 import Weather from './Weather'
+import Mnist from './DeepLearning'
 
 const main = [
   { index: true, element: <HomePage /> },
@@ -37,6 +38,7 @@ const python = [
   { path: 'TextDetect', element: <TextDetect /> },
   { path: 'RectangleDimension', element: <RectangleDimension /> },
   { path: 'ComparePackageText', element: <ComparePackageText /> },
+  { path: 'Mnist', element: <Mnist /> },
 ]
 
 const embedded = [

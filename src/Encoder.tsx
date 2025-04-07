@@ -86,45 +86,43 @@ const Encoder = () => {
             borderRadius: '8px',
           }}
         />
-        <Typography variant='body1'>
-          1. hrana - vyvolá se pin1 DT (modrá) a stáhne se na GND.
-          <List>
-            <ListItem>řádek 3 - Ověření, od kterého pinu přišlo přerušení, nesplněno.</ListItem>
-            <ListItem>řádek 15 - Kontrola hodnoty pin0 splněna.</ListItem>
-            <ListItem>řádek 17 - pin0 A = True.</ListItem>
-            <ListItem>řádek 18 - pin0 A != prevA (defaultně True) nesplněno.</ListItem>
-            <ListItem>prevA = True; prevB = True.</ListItem>
-          </List>
-          2. hrana - vyvolá se pin0 CLK (žlutá) a stáhne se na GND.
-          <List>
-            <ListItem>řádek 3 - Kontrola hodnoty pinu 1 splněna.</ListItem>
-            <ListItem>řádek 5 - pin1 B = False.</ListItem>
-            <ListItem>řádek 6 - hodnota (pin1 B = False) != (prevB = True) splněna.</ListItem>
-            <ListItem>řádek 7 - hodnota (pin1 B = False) == True nesplněna.</ListItem>
-            <ListItem>řádek 12 - Přepisuje se hodnota prevB = False.</ListItem>
-            <ListItem>prevA = True; prevB = False.</ListItem>
-          </List>
-          3. hrana - vyvolá se pin1 DT (modrá) zpět na 5V.
-          <List>
-            <ListItem>řádek 15 - Kontrola hodnoty pin0 splněna.</ListItem>
-            <ListItem>řádek 17 - pin0 A = False.</ListItem>
-            <ListItem>řádek 18 - (pin0 A = False) != (prevA = True) splněna.</ListItem>
-            <ListItem>řádek 19 - (pin0 A = False) == True nesplněna.</ListItem>
-            <ListItem>řádek 24 - Přepisuje se hodnota prevA = False.</ListItem>
-            <ListItem>prevA = False; prevB = False.</ListItem>
-          </List>
-          4. hrana - vyvolá se pin0 CLK (žlutá) zpět na 5V.
-          <List>
-            <ListItem>řádek 3 - Ověření pinu přerušení splněno.</ListItem>
-            <ListItem>řádek 5 - pin1 B = True.</ListItem>
-            <ListItem>řádek 6 - hodnota (pin1 B = True) != (prevB = False) splněna.</ListItem>
-            <ListItem>řádek 7 - hodnota (pin1 B = True) == True splněna.</ListItem>
-            <ListItem>řádek 8 - hodnota (pin0 A = True) == True splněna.</ListItem>
-            <ListItem>řádek 9 - Vyvolá se encoder callback.</ListItem>
-            <ListItem>řádek 12 - Přepisuje se hodnota prevB = True.</ListItem>
-            <ListItem>prevA = False; prevB = True.</ListItem>
-          </List>
-        </Typography>
+        1. hrana - vyvolá se pin1 DT (modrá) a stáhne se na GND.
+        <List>
+          <ListItem>řádek 3 - Ověření, od kterého pinu přišlo přerušení, nesplněno.</ListItem>
+          <ListItem>řádek 15 - Kontrola hodnoty pin0 splněna.</ListItem>
+          <ListItem>řádek 17 - pin0 A = True.</ListItem>
+          <ListItem>řádek 18 - pin0 A != prevA (defaultně True) nesplněno.</ListItem>
+          <ListItem>prevA = True; prevB = True.</ListItem>
+        </List>
+        2. hrana - vyvolá se pin0 CLK (žlutá) a stáhne se na GND.
+        <List>
+          <ListItem>řádek 3 - Kontrola hodnoty pinu 1 splněna.</ListItem>
+          <ListItem>řádek 5 - pin1 B = False.</ListItem>
+          <ListItem>řádek 6 - hodnota (pin1 B = False) != (prevB = True) splněna.</ListItem>
+          <ListItem>řádek 7 - hodnota (pin1 B = False) == True nesplněna.</ListItem>
+          <ListItem>řádek 12 - Přepisuje se hodnota prevB = False.</ListItem>
+          <ListItem>prevA = True; prevB = False.</ListItem>
+        </List>
+        3. hrana - vyvolá se pin1 DT (modrá) zpět na 5V.
+        <List>
+          <ListItem>řádek 15 - Kontrola hodnoty pin0 splněna.</ListItem>
+          <ListItem>řádek 17 - pin0 A = False.</ListItem>
+          <ListItem>řádek 18 - (pin0 A = False) != (prevA = True) splněna.</ListItem>
+          <ListItem>řádek 19 - (pin0 A = False) == True nesplněna.</ListItem>
+          <ListItem>řádek 24 - Přepisuje se hodnota prevA = False.</ListItem>
+          <ListItem>prevA = False; prevB = False.</ListItem>
+        </List>
+        4. hrana - vyvolá se pin0 CLK (žlutá) zpět na 5V.
+        <List>
+          <ListItem>řádek 3 - Ověření pinu přerušení splněno.</ListItem>
+          <ListItem>řádek 5 - pin1 B = True.</ListItem>
+          <ListItem>řádek 6 - hodnota (pin1 B = True) != (prevB = False) splněna.</ListItem>
+          <ListItem>řádek 7 - hodnota (pin1 B = True) == True splněna.</ListItem>
+          <ListItem>řádek 8 - hodnota (pin0 A = True) == True splněna.</ListItem>
+          <ListItem>řádek 9 - Vyvolá se encoder callback.</ListItem>
+          <ListItem>řádek 12 - Přepisuje se hodnota prevB = True.</ListItem>
+          <ListItem>prevA = False; prevB = True.</ListItem>
+        </List>
       </Paper>
       <Paper>
         <Typography variant='h2'>CCW = direction</Typography>

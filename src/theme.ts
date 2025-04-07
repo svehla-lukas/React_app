@@ -12,7 +12,7 @@ const theme = createTheme({
       main: '#FFAB91',
       light: '#FFCCBC',
       dark: '#D57263',
-      contrastText: '#ffffff',
+      contrastText: '#000000',
     },
     background: {
       default: '#FFF8DC',
@@ -154,7 +154,6 @@ const theme = createTheme({
         }),
       },
     },
-
     MuiTabs: {
       defaultProps: {
         variant: 'scrollable',
@@ -169,8 +168,8 @@ const theme = createTheme({
     MuiTab: {
       styleOverrides: {
         root: ({ theme }) => ({
-          fontSize: theme.typography.h3.fontSize,
-          fontWeight: theme.typography.h3.fontWeight,
+          fontSize: theme.typography.h4.fontSize,
+          fontWeight: theme.typography.h4.fontWeight,
           textTransform: 'none',
           color: theme.palette.primary.contrastText,
           '&.Mui-selected': {
@@ -348,6 +347,23 @@ const theme = createTheme({
           lineHeight: 1.2,
           paddingLeft: '20px',
         },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          position: 'relative',
+          paddingLeft: '16px',
+          '&::before': {
+            content: '"–"',
+            position: 'absolute',
+            left: 0,
+            top: '0.2em',
+            transform: 'none',
+            color: theme.palette.primary.main,
+            fontSize: '0.9rem',
+          },
+        }),
       },
     },
   },
