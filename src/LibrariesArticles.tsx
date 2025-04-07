@@ -100,80 +100,75 @@ int main(void) {
           existujících projektů STM32. Komunikuje s PCF8591 přes I2C sběrnici a poskytuje jednoduché
           API pro čtení a zápis hodnot.
         </Typography>
-        <Typography variant='h3'>Klíčové vlastnosti:</Typography>
+        <Typography variant='h2'>Popis chipu PCF8591</Typography>
+        <Typography>
+          PCF8591 je integrovaný obvod od společnosti NXP (dříve Philips), který kombinuje 4kanálový
+          8bitový ADC (analogově-digitální převodník) a 1kanálový 8bitový DAC (digitálně-analogový
+          převodník). Tento obvod komunikuje přes sběrnici I2C, což umožňuje snadné připojení k
+          mikroprocesorům nebo mikrokontrolérům. Vlastnosti:
+        </Typography>
+        <Typography variant='body1Bold'>ADC:</Typography>
         <List>
-          <ListItemText>- Podpora I2C: Připojení k PCF8591 pomocí sběrnice I2C.</ListItemText>
-
-          <ListItemText>
-            - Snadné API: Funkce pro inicializaci, čtení analogových hodnot a generování analogových
-            výstupů.
-          </ListItemText>
-
-          <ListItemText>
-            - Flexibilita: Možnost nastavení konfigurace kanálů a základních parametrů.
-          </ListItemText>
-          <Box
-            sx={{
-              paddingTop: '16px',
-            }}
-          >
-            <Typography variant='h2'>Popis chipu PCF8591</Typography>
-            <Typography>
-              PCF8591 je integrovaný obvod od společnosti NXP (dříve Philips), který kombinuje
-              4kanálový 8bitový ADC (analogově-digitální převodník) a 1kanálový 8bitový DAC
-              (digitálně-analogový převodník). Tento obvod komunikuje přes sběrnici I2C, což
-              umožňuje snadné připojení k mikroprocesorům nebo mikrokontrolérům. Vlastnosti:
-            </Typography>
-            <Typography variant='body1'>
-              <List>
-                <ListItemText>
-                  <Typography variant='body1Bold'>ADC:</Typography>
-                  <List sx={{ paddingLeft: '16px' }}>
-                    <ListItemText>- 4 kanály pro analogové vstupy.</ListItemText>
-                    <ListItemText>- Rozlišení 8 bitů (hodnoty 0–255).</ListItemText>
-                    <ListItemText>
-                      - Možnost konfigurace vstupních režimů:
-                      <List sx={{ paddingLeft: '16px' }}>
-                        <ListItemText>- Jednotlivé kanály (single-ended).</ListItemText>
-                        <ListItemText>- Diferenciální vstupy.</ListItemText>
-                        <ListItemText>- Kombinovaný režim.</ListItemText>
-                      </List>
-                    </ListItemText>
-                  </List>
-                </ListItemText>
-                <ListItemText>
-                  <Typography variant='body1Bold'>DAC:</Typography>
-                  <List sx={{ paddingLeft: '16px' }}>
-                    <ListItemText>- Jednokanálový digitálně-analogový převodník.</ListItemText>
-                    <ListItemText>- Rozlišení 8 bitů.</ListItemText>
-                  </List>
-                </ListItemText>
-                <ListItemText>
-                  <Typography variant='body1Bold'>Komunikace:</Typography> - Rozhraní I2C s možností
-                  adresace až 8 zařízení ma jedné sběrnici.
-                </ListItemText>
-                <ListItemText>
-                  <Typography variant='body1Bold'>Napájení:</Typography>
-                  <List sx={{ paddingLeft: '16px' }}>
-                    <ListItemText>- Provozní napětí: 2,5–6 V.</ListItemText>
-                    <ListItemText>
-                      - Typické referenční napětí: 3,3 V nebo 5 V (závisí na aplikaci).
-                    </ListItemText>
-                  </List>
-                </ListItemText>
-              </List>
-            </Typography>
-          </Box>
+          <ListItem>
+            <ListItemText primary='4 kanály pro analogové vstupy' />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary='Rozlišení 8 bitů (hodnoty 0–255)' />
+          </ListItem>
+          <ListItem>
+            <ListItemText
+              primary='Možnost konfigurace vstupních režimů:'
+              secondary={
+                <List>
+                  <ListItem>
+                    <ListItemText primary='Jednotlivé kanály (single-ended)' />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary='Diferenciální vstupy' />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary='Kombinovaný režim' />
+                  </ListItem>
+                </List>
+              }
+            />
+          </ListItem>
+        </List>
+        <Typography variant='body1Bold'>DAC:</Typography>
+        <List>
+          <ListItem>
+            <ListItemText>Jednokanálový digitálně-analogový převodník.</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Rozlišení 8 bitů.</ListItemText>
+          </ListItem>
+        </List>
+        <Typography variant='body1Bold'>Komunikace:</Typography>
+        <Typography variant='body1'>
+          <List>
+            <ListItem>
+              <ListItemText primary='Rozhraní I2C s možností adresace až 8 zařízení na jedné sběrnici.' />
+            </ListItem>
+          </List>
+        </Typography>
+        <Typography variant='body1Bold'>Napájení:</Typography>
+        <List>
+          <ListItem>
+            <ListItemText primary='Provozní napětí: 2,5–6 V.' />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary='Typické referenční napětí: 3,3 V nebo 5 V (závisí na aplikaci).' />
+          </ListItem>
         </List>
       </Paper>
       <Paper>
         <Typography variant='h2'>Použití knihovny</Typography>
         <List>
           <Paper>
-            <ListItemText>
+            <Typography variant='body1'>
               1. Inicializace: Nejprve je třeba zavolat funkci PCF8591_Init, která inicializuje
               komunikaci přes I2C.
-            </ListItemText>
+            </Typography>
             <SyntaxHighlighter
               language='c'
               style={darcula}
@@ -183,23 +178,24 @@ int main(void) {
               {codeInitLibrary}
             </SyntaxHighlighter>
             <List>
-              <ListItemText>
-                - enableAnalogOutput: Nastavte na 1 pro povolení výstupu DAC, 0 pro deaktivaci.
-              </ListItemText>
-              <ListItemText>
-                - inputMode: Konfigurace vstupního režimu (např. jednostranný nebo diferenciální).
-              </ListItemText>
-              <ListItemText>
-                - referenceVoltage: Referenční napětí pro převody ADC. Při úspěchu vrací: HAL_OK,
-                jinak chybový stav.
-              </ListItemText>
+              <ListItem>
+                <ListItemText primary='enableAnalogOutput: Nastavte na 1 pro povolení výstupu DAC, 0 pro deaktivaci.' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='inputMode: Konfigurace vstupního režimu (např. jednostranný nebo diferenciální).' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='referenceVoltage: Referenční napětí pro převody ADC. Při úspěchu vrací: HAL_OK, jinak chybový stav.' />
+              </ListItem>
             </List>
           </Paper>
           <Paper>
-            <ListItemText>2. Čtení hodnot ADC z konkrétního kanálu lze použít funkci.</ListItemText>
-            <ListItemText>
-              Pozor funkce vrací ukazatele na adresu kde je hodnota uložená!
-            </ListItemText>
+            <Typography variant='body1'>
+              2. Čtení hodnot ADC z konkrétního kanálu lze použít funkci.
+            </Typography>
+            <ListItem>
+              <ListItemText primary='Pozor funkce vrací ukazatele na adresu kde je hodnota uložená!' />
+            </ListItem>
             <SyntaxHighlighter
               language='c'
               style={darcula}
@@ -210,9 +206,9 @@ int main(void) {
             </SyntaxHighlighter>
           </Paper>
           <Paper>
-            <ListItemText>
+            <Typography variant='body1'>
               3. Nastavení DAC pro vygenerování analogové hodnoty pomocí DAC lze použít funkci.
-            </ListItemText>
+            </Typography>
             <SyntaxHighlighter
               language='c'
               style={darcula}
