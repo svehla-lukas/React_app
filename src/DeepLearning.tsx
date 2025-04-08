@@ -10,8 +10,15 @@ import { extractChapterFromMarkdown } from './helpers'
 const Mnist = () => {
   const [articleMnist, setArticleMnist] = useState<string>('')
 
+  // useEffect(() => {
+  //   fetch('python/mnistArticle.md')
+  //     .then(response => response.text())
+  //     .then(text => setArticleMnist(text))
+  //     .catch(error => console.error('Failed to load Markdown:', error))
+  // }, [])
+
   useEffect(() => {
-    fetch('python/mnistArticle.md')
+    fetch(`${process.env.PUBLIC_URL}/python/mnistArticle.md`)
       .then(response => response.text())
       .then(text => setArticleMnist(text))
       .catch(error => console.error('Failed to load Markdown:', error))
