@@ -128,7 +128,7 @@ x_test_origin = x_test_origin.astype("float32") / 255.0
 ```
 
 
-## 3. **Splitting Training Data**
+## 2. **Splitting Training Data**
 ```python
 train_data, val_data, train_targets, val_targets = train_test_split(...)
 ```
@@ -137,7 +137,7 @@ train_data, val_data, train_targets, val_targets = train_test_split(...)
 - Images are flattened from 28×28 into 1D vectors (784) for MLP.
 
 
-## 5. **Model 1 – Fully Connected Network (MLP)**
+## 3. **Model 1 – Fully Connected Network (MLP)**
 ```python
 network_1 = Sequential([...])
 ```
@@ -153,7 +153,7 @@ network_1.fit(...)      # 7 epochs, batch_size=16
 ```
 
 
-## 7. **Model 2 – Convolutional Neural Network (CNN)**
+## 4. **Model 2 – Convolutional Neural Network (CNN)**
 ```python
 network_cnn = Sequential([...])
 ```
