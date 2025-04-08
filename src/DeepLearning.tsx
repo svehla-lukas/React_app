@@ -3,19 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 import GitHubIcon from '@mui/icons-material/GitHub'
 import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
-
 import { extractChapterFromMarkdown } from './helpers'
+import rehypeRaw from 'rehype-raw'
 
 const Mnist = () => {
   const [articleMnist, setArticleMnist] = useState<string>('')
-
-  // useEffect(() => {
-  //   fetch('python/mnistArticle.md')
-  //     .then(response => response.text())
-  //     .then(text => setArticleMnist(text))
-  //     .catch(error => console.error('Failed to load Markdown:', error))
-  // }, [])
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/python/mnistArticle.md`)
