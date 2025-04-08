@@ -63,7 +63,7 @@ const Mnist = () => {
       </Paper>
       <Typography variant='overline'>This content is exported from a .md file.</Typography>
 
-      <Typography variant='overline'>Written on 21.1.2025.</Typography>
+      <Typography variant='overline'>Written on 8.4.2025.</Typography>
     </Box>
   )
 }
