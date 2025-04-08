@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts",
+    "start": "ts-node-dev --respawn src/index.ts"
   },
   "author": "Lukas Svehla",
   "license": "ISC",
