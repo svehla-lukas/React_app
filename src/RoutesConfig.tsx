@@ -17,7 +17,7 @@ import Regulators from './Regulators'
 import { RouteObject } from 'react-router-dom'
 import TicTacToe from './gameTTT'
 import Weather from './Weather'
-import Mnist from './DeepLearning'
+import { Mnist, KaggleHousePrices } from './DeepLearning'
 
 const main = [
   { index: true, element: <HomePage /> },
@@ -39,6 +39,7 @@ const python = [
   { path: 'RectangleDimension', element: <RectangleDimension /> },
   { path: 'ComparePackageText', element: <ComparePackageText /> },
   { path: 'Mnist', element: <Mnist /> },
+  { path: 'KaggleHousePrices', element: <KaggleHousePrices /> },
 ]
 
 const embedded = [
