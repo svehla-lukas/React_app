@@ -1,4 +1,4 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, useRoutes } from 'react-router-dom'
 
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@mui/material/styles'
@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <ThemeProvider theme={theme}>
-    <BrowserRouter basename='/React_app'>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </ThemeProvider>
 )
