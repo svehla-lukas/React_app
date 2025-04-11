@@ -48,7 +48,8 @@
     "test": "react-scripts test",
     "lint": "eslint \"{src,scripts}/**/*.{js,ts,tsx}\" --max-warnings 0",
     "lint:fix": "eslint \"{src,scripts}/**/*.{js,ts,tsx}\" --fix",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npx update-browserslist-db@latest"
   },
   "eslintConfig": {
     "extends": [
