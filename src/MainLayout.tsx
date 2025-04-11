@@ -128,6 +128,12 @@ const MainLayout = () => {
             Deep learning:
           </Typography>
           <Tab value='Mnist' label='MNIST' component={Link} to='/Mnist' />
+          <Tab
+            value='CostingDefects'
+            label='Costing defects'
+            component={Link}
+            to='/CostingDefects'
+          />
           <Typography variant='h3' sx={{ color: 'secondary.contrastText' }}>
             - Kaggle
           </Typography>

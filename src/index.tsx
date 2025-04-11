@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, useRoutes } from 'react-router-dom'
+import { HashRouter, useRoutes } from 'react-router-dom'
 
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@mui/material/styles'
