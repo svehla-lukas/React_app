@@ -57,7 +57,7 @@ const ShapeDetect = () => {
     return (
       <Box
         component='img'
-        src={'python/shapeDetect.gif'}
+        src={'/React_app/python/shapeDetect.gif'}
         alt='My Animation'
         sx={{
           width: '100%',
@@ -99,7 +99,7 @@ const ShapeDetect = () => {
       </Paper>
       <Box
         component='img'
-        src='python/shapeDetectPictureProcessed.png'
+        src='/React_app/python/shapeDetectPictureProcessed.png'
         alt='img encoder CCW'
         sx={{
           width: { md: '100%', xs: '80%' },
@@ -260,7 +260,7 @@ const RectangleDimension = () => {
       </Box>
       <Box
         component='img'
-        src='python/measureDimension.png'
+        src='/React_app/python/measureDimension.png'
         alt='img encoder CCW'
         sx={{
           width: { md: '100%', xs: '80%' },
@@ -331,7 +331,7 @@ const ComparePackageText = () => {
       </Box>
       <Box
         component='img'
-        src='python/textCompareOutput.png'
+        src='/React_app/python/textCompareOutput.png'
         alt='img encoder CCW'
         sx={{
           width: { md: '100%', xs: '80%' },

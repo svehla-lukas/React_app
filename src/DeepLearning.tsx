@@ -78,6 +78,7 @@ export const KaggleHousePrices = () => {
   return (
     <Box>
       <Typography variant='h1'>House Prices challenge</Typography>
+
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
         <IconButton
           onClick={() =>

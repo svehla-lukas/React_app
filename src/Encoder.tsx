@@ -16,7 +16,7 @@ const Encoder = () => {
         <Typography variant='h1'>Encoder with GPIO</Typography>
         <Box
           component='img'
-          src='embedded/encoderPhoto.png'
+          src='/React_app/embedded/encoderPhoto.png'
           alt='img encoder CCW'
           sx={{
             width: { xs: '100%', sm: '300px' },
