@@ -40,14 +40,14 @@ Trained for 7 epochs with batch size 16
 #### ⚖️ Evaluation
 
 <figure>
-  <img src="./python/trainHistory30epoch.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/trainHistory30epoch.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px; ">
     Figure: Training loss & mae 30 epochs
   </figcaption>
 </figure>
 
 <figure>
-  <img src="./python/housePricetestTarget.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/housePriceTestTarget.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px; ">
     Figure: Test with split train on 1000 values, test on 430 values
   </figcaption>
