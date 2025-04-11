@@ -132,9 +132,10 @@ export const KaggleHousePrices = () => {
   )
 }
 export const IndustrialCostingDefects = () => {
+  const linkGitHub =
+    'https://github.com/svehla-lukas/Kaggle_workShop/tree/main/casting_product_quality_inspection'
   const linkKaggle =
     'https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product'
-  const linkGitHub = 'https://github.com/svehla-lukas/Kaggle_workShop/tree/main/CostingDefects'
   const [article, setArticle] = useState('')
 
   useEffect(() => {
