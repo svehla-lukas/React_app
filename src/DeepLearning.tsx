@@ -163,7 +163,9 @@ export const IndustrialCostingDefects = () => {
           <GitHubIcon />
         </IconButton>
         <MuiLink variant='body1' href={linkGitHub} target='_blank' rel='noopener noreferrer'>
-          <Typography variant='body1'>GitHub: </Typography>
+          <Typography variant='body1'>
+            GitHub: svehla-lukas/Kaggle_workShop/casting_product_quality_inspection
+          </Typography>
         </MuiLink>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
@@ -185,7 +187,7 @@ export const IndustrialCostingDefects = () => {
           />
         </IconButton>
         <MuiLink variant='body1' href={linkKaggle} target='_blank' rel='noopener noreferrer'>
-          <Typography variant='body1'>Kaggle: Data model</Typography>
+          <Typography variant='body1'>Kaggle: Casting product image data</Typography>
         </MuiLink>
       </Box>
 
