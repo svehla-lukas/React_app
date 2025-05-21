@@ -87,28 +87,29 @@ for key, value in product_references.items():
 
 ## 🖥️ Example Output (Command Line)
 ```text
-origin text: 10226
-read text : 10226
+Checking: product_name
+origin text: Traumastem Taf Light
+read text  : Traumastem TAF Light
+similarity 88.89
+
+Checking: manufacturer
+origin text: BIOSTER, a.s. Tejny 621 - 664 71 Veverská Bítýška Czech Republic - www.bioster.eu
+read text  : BIOSTER as Tejny 621 - 664 71 Veverská Bítýška Czech Repubilic - www bioster eu
+similarity 95.38
+
+Checking: DMC_text
+origin text: (01)18590317102263 (10)2205132/1H (17)250513
+read text  : (01)1859031 7102263 (10)2205132/1H (17)250513
 similarity 100.0
 
-checking: LOT
+Checking: LOT
 origin text: 2208122/1H
-read text : 2205132/1H
+read text  : 2205132/1H
 similarity 80.0
 
-checking: EXP
+Checking: EXP
 origin text: 2026-08-01
-read text : 2025-05-13
+read text  : 2025-05-13
 similarity 62.5
-
-checking:
-origin text: (EN) Sterile resorbable haemostatic reticulum (ES) Maua hemostätica estéciJ reabsorbible (DE) Sternes
-resorbiecbaces hämostatisches Netz (GR) AnootEtpwgÉvn anoppo#iotgn atgooraruai vå<a (PL) Jalowa wchlanialna siatka
-hemostatyczna (UA) P03cM0KTYi0H"i crepw16HHi remocraTHHHHi maTepian (TR) Steril tekrar emilebilir hemostatik retikulum (PT)
-Penso hemostätico absorviveJ esterilizado
-
-read text : cmroppoetoq ano yun YABe VE ee ee PoscmoxTyiouni CTEPMNICHW•IÄ Marepian (TR)
-hemostatik retikulum (P T) Penso hemostatico
-similarity 35.18
 ```
 

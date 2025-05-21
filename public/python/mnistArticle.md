@@ -68,7 +68,7 @@ Each digit is accompanied by:
 #### ✅ Comparison of Correct Predictions
 First image shows correct prediction on numbers 
 <figure>
-  <img src="./python/mnistBothTrue.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/mnistBothTrue.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px; ">
     Figure: MLP & CNN correct predictions
   </figcaption>
@@ -90,13 +90,13 @@ However, some digits are so ambiguous (e.g. 2 vs 7, 4 vs 9, 5 vs 3) that both ne
 
 
 <figure>
-  <img src="./python/mnistMlpFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/mnistMlpFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px; ">
     Figure: MLP incorrect predictions
   </figcaption>
 </figure>
 <figure>
-  <img src="./python/mnistCnnFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/mnistCnnFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px;">
     Figure: CNN incorrect predictions
   </figcaption>
@@ -106,7 +106,7 @@ However, some digits are so ambiguous (e.g. 2 vs 7, 4 vs 9, 5 vs 3) that both ne
 
 text about false values
 <figure>
-  <img src="./python/mnistBothFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
+  <img src="/React_app/python/mnistBothFalse.png" style="max-width: 100%; height: auto;" alt="Incorrect predictions by CNN" />
   <figcaption style="text-align: center; font-size: 14px; ">
     Figure: MLP & CNN incorrect predictions
   </figcaption>

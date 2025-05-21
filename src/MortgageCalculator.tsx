@@ -147,7 +147,7 @@ const MortgageCalculator = () => {
         }}
       >
         <Button type='submit' onClick={toggleLanguage}>
-          {i18n.language === 'en' ? t('switchLanguageCZ') : t('switchLanguage')}
+          {i18n.language === 'en' ? t('switchLanguage') : t('switchLanguage')}
         </Button>
         <Button type='submit' onClick={handleChange}>
           {t('calculate')}
